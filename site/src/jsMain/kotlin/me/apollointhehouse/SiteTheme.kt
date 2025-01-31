@@ -42,17 +42,15 @@ object SitePalettes {
     )
 }
 
-fun ColorMode.toSitePalette(): SitePalette {
-    return when (this) {
-        ColorMode.LIGHT -> SitePalettes.light
-        ColorMode.DARK -> SitePalettes.dark
-    }
+fun ColorMode.toSitePalette(): SitePalette = when (this) {
+    ColorMode.LIGHT -> SitePalettes.light
+    ColorMode.DARK -> SitePalettes.dark
 }
 
 @InitSilk
-fun initTheme(ctx: InitSilkContext) {
-    ctx.theme.palettes.light.background = Color.rgb(0xFAFAFA)
-    ctx.theme.palettes.light.color = Colors.Black
-    ctx.theme.palettes.dark.background = Color.rgb(0x06080B)
-    ctx.theme.palettes.dark.color = Colors.White
+fun initTheme(ctx: InitSilkContext) = with(ctx.theme) {
+    palettes.light.background = Color.rgb(0xFAFAFA)
+    palettes.light.color = Colors.Black
+    palettes.dark.background = Color.rgb(0x06080B)
+    palettes.dark.color = Colors.White
 }

@@ -20,17 +20,17 @@ import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.*
 
 @InitSilk
-fun initSiteStyles(ctx: InitSilkContext) {
+fun initSiteStyles(ctx: InitSilkContext) = with(ctx) {
     // This site does not need scrolling itself, but this is a good demonstration for how you might enable this in your
     // own site. Note that we only enable smooth scrolling unless the user has requested reduced motion, which is
     // considered a best practice.
-    ctx.stylesheet.registerStyle("html") {
+    stylesheet.registerStyle("html") {
         cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
             Modifier.scrollBehavior(ScrollBehavior.Smooth)
         }
     }
 
-    ctx.stylesheet.registerStyleBase("body") {
+    stylesheet.registerStyleBase("body") {
         Modifier
             .fontFamily(
                 "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
@@ -41,7 +41,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
     }
 
     // Silk dividers only extend 90% by default; we want full width dividers in our site
-    ctx.theme.modifyStyleBase(HorizontalDividerStyle) {
+    theme.modifyStyleBase(HorizontalDividerStyle) {
         Modifier.fillMaxWidth()
     }
 }
