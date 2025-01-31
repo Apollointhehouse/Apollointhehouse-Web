@@ -1,0 +1,14 @@
+site:
+  title: "Apollointhehouse"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/apollointhehouse.js"
+      api: "build/libs/apollointhehouse.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/apollointhehouse.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
