@@ -1,0 +1,10 @@
+.social {
+    flex-grow: 1;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.social img {
+    width: 3em;
+    margin: 0 10px;
+}

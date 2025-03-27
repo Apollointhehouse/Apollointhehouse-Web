@@ -6,6 +6,7 @@ import kotlinx.html.stream.appendHTML
 import java.io.File
 import kotlin.io.path.Path
 import me.apollointhehouse.pages.index
+import me.apollointhehouse.pages.projects
 import kotlin.io.path.createDirectories
 
 fun main() {
@@ -22,11 +23,12 @@ fun main() {
         }
     }
 
-    File("./src/main/resources").copyRecursively(base.toFile())
+    File("./src/main/resources").copyRecursively(target = base.toFile(), overwrite = true)
 
     println("Done!")
 }
 
 val routes = mapOf<String, HTML.() -> Unit>(
-    "index" to { index() }
+    "index" to { index() },
+    "projects" to { projects() },
 )
