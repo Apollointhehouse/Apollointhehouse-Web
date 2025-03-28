@@ -15,15 +15,20 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes["Main-Class"] = "me.apollointhehouse.MainKt"
-    }
+tasks.jar {
+    manifest.attributes["Main-Class"] = "me.apollointhehouse.MainKt"
+    val dependencies = configurations
+        .runtimeClasspath
+        .get()
+        .map { zipTree(it) }
+    from(dependencies)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(21)
 }
