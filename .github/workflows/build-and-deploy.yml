@@ -17,7 +17,7 @@ env:
 
 jobs:
   run:
-    name: Build Static Site and Run JAR
+    name: Build and Run jar
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
@@ -50,8 +50,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-        with:
-          build-dir: './out'
 
   deploy:
     environment:
@@ -64,6 +62,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          branch: gh-pages
-          folder: './out'
