@@ -41,6 +41,12 @@ jobs:
           ./gradlew build  # Build the project and produce the JAR
           java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar  # Run the JAR (make sure the path matches)
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: './out'
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
