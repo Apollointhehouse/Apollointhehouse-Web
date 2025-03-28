@@ -15,6 +15,12 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "me.apollointhehouse.MainKt"
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
