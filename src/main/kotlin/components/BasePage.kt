@@ -2,7 +2,7 @@ package me.apollointhehouse.components
 
 import kotlinx.html.*
 
-fun HTML.base(title: String, block: MAIN.() -> Unit) {
+fun HTML.base(title: String, block: BODY.() -> Unit) {
     lang = "en"
 
     head {
@@ -16,12 +16,6 @@ fun HTML.base(title: String, block: MAIN.() -> Unit) {
     }
 
     body {
-        main(classes = "container") {
-            header()
-
-            block()
-
-            footer()
-        }
+        block()
     }
 }

@@ -10,8 +10,8 @@ private val socials = listOf(
     )
 )
 
-fun FlowContent.footer() {
-    footer("container") {
+fun FlowContent.footer() = footer {
+    div("container") {
         div("social") {
             p { +"Contact me:" }
 
