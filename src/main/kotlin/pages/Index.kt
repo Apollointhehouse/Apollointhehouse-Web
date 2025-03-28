@@ -11,7 +11,7 @@ import me.apollointhehouse.components.*
 
 fun HTML.index() = base("Home") {
     div("hero") {
-        navbar(Page("Home", "index.html"), Page("Projects", "projects.html"))
+        navbar(Page("Home", ""), Page("Projects", "projects"))
 
         div("container") {
             hGroup {

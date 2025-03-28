@@ -8,7 +8,7 @@ import me.apollointhehouse.components.*
 
 fun HTML.projects() = base("Projects") {
     div("hero") {
-        navbar(Page("Home", "index.html"), Page("Projects", "projects.html"))
+        navbar(Page("Home", "../"), Page("Projects", ""))
     }
     main(classes = "container") {
         h1 { +"Work in Progress!" }

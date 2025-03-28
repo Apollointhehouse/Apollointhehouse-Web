@@ -6,7 +6,7 @@ private val socials = listOf(
     Social(
         name = "Github",
         url = "https://github.com/apollointhehouse",
-        icon = "images/github.png",
+        icon = "/images/github.png",
     )
 )
 

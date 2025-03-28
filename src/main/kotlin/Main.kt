@@ -13,10 +13,10 @@ fun main() {
     val base = Path("./out").createDirectories()
 
     for ((route, page) in routes) {
-        println("Creating $route page")
+        println("Creating route: $route")
 
-        val file = File("$base/$route.html")
-        file.createNewFile()
+        val folder =  File("$base/$route").also { it.mkdirs() }
+        val file = File("$folder/index.html").also { it.createNewFile() }
 
         file.writer().use {
             it.appendLine("<!DOCTYPE html>").appendHTML().html(block = page)
@@ -29,6 +29,6 @@ fun main() {
 }
 
 val routes = mapOf<String, HTML.() -> Unit>(
-    "index" to { index() },
+    "/" to { index() },
     "projects" to { projects() },
 )
