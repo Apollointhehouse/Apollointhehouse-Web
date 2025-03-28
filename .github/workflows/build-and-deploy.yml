@@ -42,7 +42,7 @@ jobs:
           java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar  # Run the JAR (make sure the path matches)
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
           path: './out'
