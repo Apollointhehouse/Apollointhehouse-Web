@@ -1,9 +1,12 @@
 plugins {
-    kotlin("jvm") version "2.0.21"
+    kotlin("jvm") version "2.1.20"
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 group = "me.apollointhehouse"
 version = "1.0-SNAPSHOT"
+
+val ktor_version: String by project
 
 repositories {
     mavenCentral()
@@ -11,6 +14,9 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.12.0")
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("io.ktor:ktor-client-serialization:$ktor_version")
 
     testImplementation(kotlin("test"))
 }
