@@ -1,12 +1,10 @@
 package me.apollointhehouse
 
-import kotlinx.html.HTML
-import kotlinx.html.html
+import kotlinx.html.*
+import me.apollointhehouse.pages.*
 import kotlinx.html.stream.appendHTML
 import java.io.File
 import kotlin.io.path.Path
-import me.apollointhehouse.pages.index
-import me.apollointhehouse.pages.projects
 import kotlin.io.path.createDirectories
 
 fun main() {
@@ -31,4 +29,5 @@ fun main() {
 val routes = mapOf<String, HTML.() -> Unit>(
     "/" to { index() },
     "projects" to { projects() },
+    "blogs" to { blogs() },
 )

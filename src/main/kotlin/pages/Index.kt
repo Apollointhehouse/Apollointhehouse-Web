@@ -1,17 +1,11 @@
 package me.apollointhehouse.pages
 
-import kotlinx.html.HTML
-import kotlinx.html.div
-import kotlinx.html.h1
-import kotlinx.html.h2
-import kotlinx.html.hGroup
-import kotlinx.html.main
-import kotlinx.html.p
+import kotlinx.html.*
 import me.apollointhehouse.components.*
 
 fun HTML.index() = base("Home") {
     div("hero") {
-        navbar(Page("Home", ""), Page("Projects", "projects"))
+        navbar(Page("Home", ""), Page("Projects", "projects"), Page("Blogs", "blogs"))
 
         div("container") {
             hGroup {
