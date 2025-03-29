@@ -8,7 +8,7 @@ import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
 
 fun main(args: Array<String>) {
-    Config.pat = args.getOrNull(0)?.also { println(it.take(8)) } ?: error("Missing PAT!")
+    Config.pat = args.getOrNull(0) ?: error("Missing PAT!")
 
     val base = Path("./out").createDirectories()
 
