@@ -12,6 +12,7 @@ fun HTML.base(title: String, block: BODY.() -> Unit) {
 
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css")
         link(rel="stylesheet", href="/style.css")
+        link(rel = "icon", type = "image/x-icon", href = "/images/icon.png")
         title { +title }
     }
 

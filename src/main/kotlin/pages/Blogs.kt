@@ -29,7 +29,7 @@ fun generateBlogs(): List<String> {
     }
 }
 
-val blogs = generateBlogs()
+private val blogs = generateBlogs()
 
 fun HTML.blogs() = base("Blogs") {
     div("hero") {
