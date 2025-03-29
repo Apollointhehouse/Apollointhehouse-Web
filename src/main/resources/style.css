@@ -1,10 +1,14 @@
-.social {
-    flex-grow: 1;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
 .social img {
-    width: 3em;
-    margin: 0 10px;
+    width: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.social li {
+    margin: 0 1px;
+}
+
+.social a {
+    margin: 0;
+    padding: 0;
 }
