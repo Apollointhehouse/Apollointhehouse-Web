@@ -2,7 +2,7 @@ package me.apollointhehouse.pages
 
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
-import me.apollointhehouse.base
+import me.apollointhehouse.Config
 import me.apollointhehouse.components.*
 import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
@@ -16,7 +16,7 @@ fun generateBlogs(): List<String> {
     val texts = File("./src/main/kotlin/blogs").listFiles().map { it.name.substringBefore(".md") to it.readText() }
 
     return texts.map { (name, text) ->
-        val folder =  File("$base/blogs/$name").also { it.mkdirs() }
+        val folder =  File("${Config.base}/blogs/$name").also { it.mkdirs() }
         val file = File("$folder/index.html").also { it.createNewFile() }
 
         val parsedTree = mdParser.buildMarkdownTreeFromString(text)
