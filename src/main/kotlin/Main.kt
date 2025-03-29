@@ -7,7 +7,9 @@ import java.io.File
 import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
 
-fun main() {
+fun main(args: Array<String>) {
+    Config.pat = args.getOrNull(0) ?: error("Missing PAT!")
+
     val base = Path("./out").createDirectories()
 
     for ((route, page) in routes) {

@@ -45,3 +45,4 @@ bin/
 .DS_Store
 
 out/*
+/.idea/inspectionProfiles/Project_Default.xml

@@ -39,7 +39,7 @@ jobs:
         working-directory: ./
         run: |
           ./gradlew build  # Build the project and produce the JAR
-          java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar  # Run the JAR (make sure the path matches)
+          java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar ${{ secrets.PAT }}  # Run the JAR
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
