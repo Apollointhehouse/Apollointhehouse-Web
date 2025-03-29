@@ -41,7 +41,7 @@ jobs:
           PAT: ${{ secrets.PAT }}
         run: |
           ./gradlew build  # Build the project and produce the JAR
-          java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar "$env:PAT"  # Run the JAR
+          java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar ${{ env.PAT }} # Run the JAR
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
