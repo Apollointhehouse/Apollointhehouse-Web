@@ -18,13 +18,11 @@ fun HTML.projects() = base("Projects") {
         navbar(Page("Home", "../"), Page("Projects", ""), Page("Blogs", "../blogs"))
     }
     main(classes = "container") {
-        for (project in projects) {
-            section("projects-list") {
+        section("projects-list") {
+            for (project in projects) {
                 article {
-                    div("badges") {
-                        a(href = project.url) { h2 { +project.name } }
-                        p { +project.description }
-                    }
+                    a(href = project.url) { h2 { +project.name } }
+                    p { +project.description }
                 }
             }
         }
