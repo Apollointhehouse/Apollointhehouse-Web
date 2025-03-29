@@ -32,4 +32,5 @@ val routes = mapOf<String, HTML.() -> Unit>(
     "/" to { index() },
     "projects" to { projects() },
     "blogs" to { blogs() },
+    "test" to { test() },
 )
