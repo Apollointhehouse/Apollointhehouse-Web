@@ -1,16 +1,16 @@
 package me.apollointhehouse
 
 import kotlinx.html.*
-import me.apollointhehouse.pages.*
 import kotlinx.html.stream.appendHTML
+import me.apollointhehouse.pages.*
 import java.io.File
-import kotlin.io.path.Path
-import kotlin.io.path.createDirectories
+import kotlin.io.path.*
+
+val base = Path("./out").createDirectories()
 
 fun main(args: Array<String>) {
     Config.pat = args.getOrNull(0) ?: error("Missing PAT!")
 
-    val base = Path("./out").createDirectories()
 
     for ((route, page) in routes) {
         println("Creating route: $route")
