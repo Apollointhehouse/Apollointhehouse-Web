@@ -11,7 +11,8 @@ data class Project(
 )
 
 val projects = getPinnedRepos()
-    .map { Project(it.name, it.description ?: "", it.url) }
+    ?.map { Project(it.name, it.description ?: "", it.url) }
+    ?: error("Failed to get pinned repos")
 
 fun HTML.projects() = base("Projects") {
     div("hero") {

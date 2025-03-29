@@ -15,13 +15,17 @@ repositories {
 dependencies {
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-cio:$ktor_version")
+
     implementation("io.ktor:ktor-client-serialization:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
-    implementation("io.ktor:ktor-client-logging:$ktor_version")
 
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.12.0")
     implementation("org.jetbrains:markdown:0.7.3")
+
+    implementation("io.ktor:ktor-client-logging:$ktor_version")
+    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.19.0")
 
     testImplementation(kotlin("test"))
 }

@@ -10,11 +10,13 @@ import io.ktor.client.request.*
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import me.apollointhehouse.models.GraphQLQuery
-import models.PinnedRepos
+import models.Node
+import models.UserData
 
 private val client: HttpClient = HttpClient(CIO) {
     install(ContentNegotiation) {
@@ -45,7 +47,7 @@ private val query = """
     }
 """.trimIndent()
 
-fun getPinnedRepos() = runBlocking {
+fun getPinnedRepos(): List<Node>? = runBlocking {
     val res = client.post("https://api.github.com/graphql") {
         contentType(ContentType.Application.Json)
         headers {
@@ -56,5 +58,8 @@ fun getPinnedRepos() = runBlocking {
         setBody(GraphQLQuery(query))
     }
 
-    res.body<PinnedRepos>().data.user.pinnedItems.nodes
+    if (res.status.isSuccess()) {
+        val res = res.body<UserData>()
+        res.data.user.pinnedItems.nodes
+    } else null
 }
