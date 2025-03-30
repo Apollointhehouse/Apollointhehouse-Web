@@ -1,35 +1,33 @@
 package me.apollointhehouse.pages
 
 import kotlinx.html.*
-import kotlinx.html.stream.appendHTML
-import me.apollointhehouse.Config
 import me.apollointhehouse.components.*
+import me.apollointhehouse.setupRoutes
 import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 import java.io.File
 
-fun generateBlogs(): List<String> {
+private fun generateBlogs(): Map<String, HTML.() -> Unit> {
     val flavour = CommonMarkFlavourDescriptor()
     val mdParser = MarkdownParser(flavour)
 
-    val texts = File("./src/main/kotlin/blogs").listFiles().map { it.name.substringBefore(".md") to it.readText() }
+    val texts = File("./src/main/kotlin/blogs")
+        .listFiles()
+        .map { it.name.substringBefore(".md") to it.readText() }
 
-    return texts.map { (name, text) ->
-        val folder =  File("${Config.base}/blogs/$name").also { it.mkdirs() }
-        val file = File("$folder/index.html").also { it.createNewFile() }
-
+    val routes = texts.associate { (name, text) ->
         val parsedTree = mdParser.buildMarkdownTreeFromString(text)
         val html = HtmlGenerator(text, parsedTree, flavour).generateHtml()
+        val page: HTML.() -> Unit = { blog(name, html) }
 
-        file.writer().use {
-            it.appendLine("<!DOCTYPE html>").appendHTML().html { blog(name, html) }
-        }
-        name
+        "blogs/$name" to page
     }
-}
 
-private val blogs = generateBlogs()
+    setupRoutes(routes)
+
+    return routes
+}
 
 fun HTML.blogs() = base("Blogs") {
     div("hero") {
@@ -37,7 +35,11 @@ fun HTML.blogs() = base("Blogs") {
     }
     main(classes = "container") {
         section("blogs-list") {
-            for (name in blogs) {
+            val blogs = generateBlogs()
+
+            for ((route, _) in blogs) {
+                val name = route.substringAfter("/")
+
                 article {
                     a(href = name) { h2 { +name } }
                 }
