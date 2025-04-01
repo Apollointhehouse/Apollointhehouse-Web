@@ -21,7 +21,7 @@ private fun generateBlogs(): Map<String, HTML.() -> Unit> {
         val html = HtmlGenerator(text, parsedTree, flavour).generateHtml()
         val page: HTML.() -> Unit = { blog(name, html) }
 
-        "blogs/$name" to page
+        "/blogs/$name" to page
     }
 
     setupRoutes(routes)
@@ -38,7 +38,7 @@ fun HTML.blogs() = base("Blogs") {
             val blogs = generateBlogs()
 
             for ((route, _) in blogs) {
-                val name = route.substringAfter("/")
+                val name = route.substringAfter("/blogs/")
 
                 article {
                     a(href = name) { h2 { +name } }

@@ -7,9 +7,9 @@ fun main(args: Array<String>) {
 
     setupRoutes(mapOf(
         "/" to { index() },
-        "projects" to { projects() },
-        "blogs" to { blogs() },
-        "test" to { test() },
+        "/projects" to { projects() },
+        "/blogs" to { blogs() },
+        "/test" to { test() },
     ))
 
     setupResources()
