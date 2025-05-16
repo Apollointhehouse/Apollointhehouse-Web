@@ -4,13 +4,13 @@ import kotlinx.html.*
 import me.apollointhehouse.components.*
 import me.apollointhehouse.getPinnedRepos
 
-data class Project(
+private data class Project(
     val name: String,
     val description: String,
     val url: String,
 )
 
-val projects = getPinnedRepos()
+private val projects = getPinnedRepos()
     ?.map { Project(it.name, it.description ?: "", it.url) }
     ?: error("Failed to get pinned repos")
 
