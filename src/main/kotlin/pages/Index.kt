@@ -16,17 +16,30 @@ fun HTML.index() = base("Home") {
         }
     }
     main("container") {
-        section("about-me") {
+        article("about-me") {
             h3 { +"About Me" }
             p { +"I am a high school student from New Zealand, planning to attend the University of Auckland." }
             p { +"I am particularly interested in backend development, especially using Kotlin." }
         }
 
-        section("skills") {
+        article("skills") {
             h3 { +"Skills" }
             ul {
-                li { +"Proficient in Kotlin, Java, Python, HTML, CSS, and JavaScript." }
-                li { +"Backend: SQL, Ktor, Flask" }
+                li {
+                    h4 { +"Backend:" }
+                    ul {
+                        li { +"Languages: Kotlin, Java, Python, SQL" }
+                        li { +"Frameworks: KTor, Flask, Javalin" }
+                    }
+                }
+
+                li {
+                    h4 { +"Frontend:" }
+                    ul {
+                        li { +"Languages: HTML, CSS, JavaScript" }
+//                        li { +"Frameworks: Vue" }
+                    }
+                }
             }
 
             img {
@@ -35,17 +48,17 @@ fun HTML.index() = base("Home") {
             }
         }
 
-        section("experience") {
+        article("experience") {
             h3 { +"Experience" }
             p { +"Currently, I have no professional experience, but I have participated in the Terrible Ideas Hackathon, where I worked effectively in a team. Additionally, I have collaborated on several shared GitHub projects with individuals of varying experience levels." }
         }
 
-        section("education") {
+        article("education") {
             h3 { +"Education" }
             p { +"Senior High School Student, planning to attend the University of Auckland." }
         }
 
-        section("stats") {
+        article("stats") {
             h3 { +"Stats" }
 
             img {
