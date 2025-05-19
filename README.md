@@ -12,8 +12,8 @@ The project is organised as follows:
 ## Technologies Used
 
 - **Kotlin**: The primary programming language used for the website.
-- **Kotlinx.html**: A DSL for building HTML in Kotlin.
-- **Pico.css**: Minimal CSS framework for semantic HTML.
+- **Kotlinx Html**: A DSL for building HTML in Kotlin.
+- **Pico Css**: Minimal CSS framework for semantic HTML.
 
 ## How to Run
 
