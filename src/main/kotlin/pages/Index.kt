@@ -24,21 +24,17 @@ fun HTML.index() = base("Home") {
 
         article("skills") {
             h3 { +"Skills" }
-            ul {
-                li {
-                    h4 { +"Backend:" }
-                    ul {
-                        li { +"Languages: Kotlin, Java, Python, SQL" }
-                        li { +"Frameworks: KTor, Flask, Javalin" }
-                    }
-                }
 
-                li {
-                    h4 { +"Frontend:" }
-                    ul {
-                        li { +"Languages: HTML, CSS, JavaScript" }
-                    }
-                }
+            h4 { +"Backend:" }
+            ul {
+                li { +"Languages: Kotlin, Java, Python, SQL" }
+                li { +"Frameworks: KTor, Flask, Javalin" }
+            }
+
+            h4 { +"Frontend:" }
+            ul {
+                li { +"Languages: HTML, CSS, JavaScript" }
+                li { +"Frameworks: Pico Css, Tailwind" }
             }
         }
 
