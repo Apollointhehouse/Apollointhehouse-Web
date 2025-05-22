@@ -3,6 +3,7 @@ $root = Join-Path $user "RLHSUtils"
 $installs = Join-Path $root "installs"
 $libs = Join-Path $root "libs"
 $desktop = "\\internal.rotorualakes.school.nz\Users\Home\Students\$env:username\Desktop"
+#$desktop = "C:\Users\apoll\Desktop"
 
 if (!(Test-Path -Path $root)) {
     # Run Setup Script
@@ -19,7 +20,7 @@ if (!(Test-Path -Path $root)) {
 $url = "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe"
 $installer = Join-Path $env:TEMP "SteamSetup.exe"
 $steam = Join-Path $installs "Steam"
-$shortcut = Join-Path $desktopPath "Steam.lnk"
+$shortcut = Join-Path $desktop "Steam.lnk"
 
 if (Test-Path -Path $steam) {
     throw "Steam is already installed!"
