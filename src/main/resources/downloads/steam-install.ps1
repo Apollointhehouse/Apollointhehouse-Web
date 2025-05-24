@@ -5,17 +5,15 @@ $libs = Join-Path $root "libs"
 $desktop = "\\internal.rotorualakes.school.nz\Users\Home\Students\$env:username\Desktop"
 #$desktop = "C:\Users\apoll\Desktop"
 
-if (!(Test-Path -Path $root)) {
-    # Run Setup Script
-    Write-Host "Running setup script..."
+# Run Setup Script
+Write-Host "Running setup script..."
 
-    $setupUrl = "https://raw.githubusercontent.com/Apollointhehouse/Apollointhehouse-Web/refs/heads/master/src/main/resources/downloads/setup.ps1"
-    $setup = Join-Path $env:TEMP "setup.ps1"
-    Invoke-WebRequest -Uri $setupUrl -OutFile $setup
-    Invoke-Expression $setup
+$setupUrl = "https://raw.githubusercontent.com/Apollointhehouse/Apollointhehouse-Web/refs/heads/master/src/main/resources/downloads/setup.ps1"
+$setup = Join-Path $env:TEMP "setup.ps1"
+Invoke-WebRequest -Uri $setupUrl -OutFile $setup
+Invoke-Expression $setup
 
-    Remove-Item $setup -Force
-}
+Remove-Item $setup -Force
 
 $url = "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe"
 $installer = Join-Path $env:TEMP "SteamSetup.exe"
