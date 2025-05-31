@@ -6,17 +6,17 @@ private val socials = listOf(
     Social(
         name = "Github",
         url = "https://github.com/apollointhehouse",
-        icon = "/images/github.png",
+        icon = "github.png",
     ),
     Social(
         name = "LinkedIn",
         url = "https://linkedin.com/in/apollo-cameron-boot-8061a12b8",
-        icon = "/images/linkedin.png",
+        icon = "linkedin.png",
     ),
     Social(
         name = "Bluesky",
         url = "https://bsky.app/profile/apollointhehouse.bsky.social",
-        icon = "/images/bluesky.png",
+        icon = "bluesky.png",
     ),
 
 )
@@ -32,13 +32,9 @@ fun FlowContent.footer() = footer {
         ul {
             for (social in socials) {
                 li("social") {
-                    a("contrast") {
-                        href = social.url
-                        target = "_blank"
-                        img(classes = "dark-mode") {
-                            src = social.icon
-                            alt = social.name
-                        }
+                    a(href = social.url, classes = "contrast", target = "_blank") {
+                        img(classes = "hide dark-mode", src = "/images/light-${social.icon}", alt = social.name)
+                        img(classes = "hide light-mode", src = "/images/dark-${social.icon}", alt = social.name)
                     }
                 }
             }

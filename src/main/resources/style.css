@@ -17,3 +17,12 @@
     height: 180px;
     padding-right: 15px;
 }
+
+.hide { display: none; }
+
+@media (prefers-color-scheme: dark) {
+    .dark-mode { display: inline; }
+}
+@media (prefers-color-scheme: light) {
+    .light-mode { display: inline; }
+}

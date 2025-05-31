@@ -51,18 +51,33 @@ fun HTML.index() = base("Home") {
         article("metrics") {
             h3 { +"Metrics" }
 
-            img {
-                src =
-                    "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=24273a&text_color=cad3f5&icon_color=c6a0f6&title_color=8bd5ca&hide_border=false&locale=en"
-                alt = "Apollo's Github Stats"
-            }
+            val themes = listOf(
+                StatsTheme("24273a", "cad3f5", "c6a0f6", "8bd5ca", "dark-mode"),
+                StatsTheme("eff1f5", "4c4f69", "8839ef", "179299", "light-mode")
+            )
 
-            img {
-                src =
-                    "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=24273a&text_color=cad3f5&icon_color=c6a0f6&title_color=8bd5ca&hide_border=false&layout=compact&locale=en"
-                alt = "Apollo's Most Used Languages"
+            for (theme in themes) {
+                img(
+                    classes = "hide ${theme.mode}",
+                    src = "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en",
+                    alt = "Apollo's Github Stats"
+                )
+
+                img(
+                    classes = "hide ${theme.mode}",
+                    src = "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en",
+                    alt = "Apollo's Most Used Languages"
+                )
             }
         }
     }
     footer()
 }
+
+private data class StatsTheme(
+    val bgColor: String,
+    val textColor: String,
+    val iconColor: String,
+    val titleColor: String,
+    val mode: String
+)
