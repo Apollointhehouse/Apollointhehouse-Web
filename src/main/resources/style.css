@@ -18,11 +18,11 @@
     padding-right: 15px;
 }
 
-.social .icon { display: none; }
+.hide { display: none; }
 
 @media (prefers-color-scheme: dark) {
-    .social .dark-mode { display: inline; }
+    .dark-mode { display: inline; }
 }
 @media (prefers-color-scheme: light) {
-    .social .light-mode { display: inline; }
+    .light-mode { display: inline; }
 }
