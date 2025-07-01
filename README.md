@@ -30,7 +30,7 @@ The project is organised as follows:
 
 3. Run the project:
     ```sh
-    ./gradlew run
+    java -jar .\build\libs\Apollointhehouse-Web-1.0-SNAPSHOT.jar PAT
     ```
 
 ## License
