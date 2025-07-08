@@ -8,6 +8,8 @@ The project is organised as follows:
 
 - `src/main/kotlin/pages/`: Pages
 - `src/main/kotlin/components/`: Common components used across pages
+- `src/main/resources/static/`: Static resources e.g. images, stylesheet, scripts
+- `src/main/resources/blogs/`: Blog markdown files
 
 ## Technologies Used
 
