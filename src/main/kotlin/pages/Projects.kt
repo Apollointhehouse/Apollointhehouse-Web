@@ -9,6 +9,7 @@ import me.apollointhehouse.getPinnedRepos
 import me.apollointhehouse.models.RepoInfo
 import me.apollointhehouse.utils.Markdown
 import me.apollointhehouse.utils.component
+import me.apollointhehouse.utils.details
 import me.apollointhehouse.utils.toHtml
 
 private data class Project(
@@ -42,14 +43,17 @@ fun HTML.projects() = base("Projects") {
                     p { +project.description }
 
                     if (project.readmeSrc != null) {
-                        details {
-                            summary { strong { +"More Info" } }
+                        details(name = "readme") {
+                            summary {
+                                classes = setOf("outline", "secondary")
+                                strong { +"More Info" }
+                            }
 
                             hr()
 
                             iframe {
                                 src = "../${project.readmeSrc}"
-                                style="display:block; border:none; height:50vh; width:100%;"
+                                style="display:block; border:none; height:50vh; width:100%; border-radius:var(--pico-border-radius);"
                             }
                         }
                     }
