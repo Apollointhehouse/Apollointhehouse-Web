@@ -40,6 +40,11 @@ private val query = """
               name
               description
               url
+              object(expression: "HEAD:README.md") {
+                ... on Blob {
+                  text
+                }
+              }
             }
           }
         }

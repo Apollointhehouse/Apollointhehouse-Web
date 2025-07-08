@@ -19,5 +19,5 @@ fun setupRoutes(routes: Map<String, HTML.() -> Unit>) {
 }
 
 fun setupResources() {
-    File("./src/main/resources").copyRecursively(target = Config.base.toFile(), overwrite = true)
+    File("./src/main/resources/static").copyRecursively(target = Config.base.toFile(), overwrite = true)
 }

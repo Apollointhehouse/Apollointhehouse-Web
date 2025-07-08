@@ -13,12 +13,6 @@ private val socials = listOf(
         url = "https://linkedin.com/in/apollo-cameron-boot-8061a12b8",
         icon = "linkedin.png",
     ),
-//    Social(
-//        name = "Bluesky",
-//        url = "https://bsky.app/profile/apollointhehouse.bsky.social",
-//        icon = "bluesky.png",
-//    ),
-
 )
 
 fun FlowContent.footer() = footer {
