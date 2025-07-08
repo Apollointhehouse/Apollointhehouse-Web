@@ -1,7 +1,9 @@
 package me.apollointhehouse.models
+
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserData(
-    val `data`: Data
+data class PageInfo(
+    val endCursor: String,
+    val hasNextPage: Boolean
 )

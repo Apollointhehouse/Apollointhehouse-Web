@@ -1,7 +1,9 @@
 package me.apollointhehouse.models
+
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserData(
-    val `data`: Data
+data class Search(
+    val pageInfo: PageInfo,
+    val repos: List<RepoHolder>
 )

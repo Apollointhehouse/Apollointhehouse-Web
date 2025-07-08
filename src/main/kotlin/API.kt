@@ -3,20 +3,16 @@ package me.apollointhehouse
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
-import io.ktor.http.ContentType
-import io.ktor.http.HttpHeaders
-import io.ktor.http.contentType
-import io.ktor.http.isSuccess
-import io.ktor.serialization.kotlinx.json.json
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import me.apollointhehouse.models.GraphQLQuery
-import models.Node
-import models.UserData
+import me.apollointhehouse.models.RepoHolder
+import me.apollointhehouse.models.UserData
 
 private val client: HttpClient = HttpClient(CIO) {
     install(ContentNegotiation) {
@@ -31,15 +27,19 @@ private val client: HttpClient = HttpClient(CIO) {
     }
 }
 
-private val query = """
+private val query = """    
     {
-      user(login: "Apollointhehouse") {
-        pinnedItems(first: 6, types: REPOSITORY) {
-          nodes {
+      search(first: 100, type: REPOSITORY, query: "topic:show-project user:Apollointhehouse") {
+        pageInfo {
+          hasNextPage
+          endCursor
+          }
+        repos: edges {
+          repo: node {
             ... on Repository {
-                name
-                description
-                url
+              name
+              description
+              url
             }
           }
         }
@@ -47,7 +47,7 @@ private val query = """
     }
 """.trimIndent()
 
-fun getPinnedRepos(): List<Node>? = runBlocking {
+fun getPinnedRepos(): List<RepoHolder>? = runBlocking {
     val res = client.post("https://api.github.com/graphql") {
         contentType(ContentType.Application.Json)
         headers {
@@ -60,6 +60,6 @@ fun getPinnedRepos(): List<Node>? = runBlocking {
 
     if (res.status.isSuccess()) {
         val res = res.body<UserData>()
-        res.data.user.pinnedItems.nodes
+        res.data.search.repos
     } else null
 }
