@@ -31,8 +31,10 @@ inline fun FlowOrInteractiveOrPhrasingContent.iframe(
     ).visit(block)
 }
 
-fun FlowContent.loadComponent(name: String) =
+inline fun FlowContent.loadComponent(name: String, crossinline block: DIV.() -> Unit = {}) =
     div {
+        block()
+
         attributes["aria-busy"] = "true"
         iframe(loading = "lazy") {
             src = "/components/$name"

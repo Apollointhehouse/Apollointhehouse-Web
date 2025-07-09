@@ -14,7 +14,7 @@ private data class Project(
     val name: String,
     val description: String,
     val url: String,
-    val readme: String?,
+    val readmeComponent: String?,
 )
 
 private fun createProject(info: RepoInfo): Project =
@@ -22,7 +22,7 @@ private fun createProject(info: RepoInfo): Project =
         name = info.name,
         description = info.description ?: "",
         url = info.url,
-        readme = info.readme?.toComponent("readme-${info.name}"),
+        readmeComponent = info.readme?.toComponent("readme-${info.name}"),
     )
 
 private val projects = getPinnedRepos()
@@ -39,7 +39,7 @@ fun HTML.projects() = base("Projects") {
                     a(href = project.url) { h2 { +project.name } }
                     p { +project.description }
 
-                    if (project.readme != null) {
+                    if (project.readmeComponent != null) {
                         details(name = "readme") {
                             summary {
                                 classes = setOf("outline", "secondary")
@@ -48,7 +48,10 @@ fun HTML.projects() = base("Projects") {
 
                             hr()
 
-                            loadComponent(project.readme)
+                            loadComponent(project.readmeComponent) {
+                                classes = setOf("overflow-auto")
+                                style = "max-height: 50vh"
+                            }
                         }
                     }
                 }
