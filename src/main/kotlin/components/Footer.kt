@@ -27,8 +27,8 @@ fun FlowContent.footer() = footer {
             for (social in socials) {
                 li("social") {
                     a(href = social.url, classes = "contrast", target = "_blank") {
-                        img(classes = "hide dark-mode", src = "/assets/images/light-${social.icon}", alt = social.name)
-                        img(classes = "hide light-mode", src = "/assets/images/dark-${social.icon}", alt = social.name)
+                        img(loading = ImgLoading.lazy, classes = "hide dark-mode", src = "/assets/images/light-${social.icon}", alt = social.name)
+                        img(loading = ImgLoading.lazy, classes = "hide light-mode", src = "/assets/images/dark-${social.icon}", alt = social.name)
                     }
                 }
             }

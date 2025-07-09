@@ -57,12 +57,14 @@ fun HTML.index() = base("Home") {
 
             for (theme in themes) {
                 img(
+                    loading = ImgLoading.lazy,
                     classes = "hide ${theme.mode}",
                     src = "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en",
                     alt = "Apollo's Github Stats"
                 )
 
                 img(
+                    loading = ImgLoading.lazy,
                     classes = "hide ${theme.mode}",
                     src = "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en",
                     alt = "Apollo's Most Used Languages"
