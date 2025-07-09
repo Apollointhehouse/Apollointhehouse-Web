@@ -4,5 +4,5 @@ import kotlinx.html.*
 import me.apollointhehouse.components.*
 
 fun HTML.test() = base("Test") {
-    script { src = "/static/test.js" }
+    script { src = "/test.js" }
 }
