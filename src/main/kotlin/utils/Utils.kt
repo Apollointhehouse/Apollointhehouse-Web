@@ -18,7 +18,7 @@ fun Markdown.toHtml(): String {
     return html
 }
 
-fun component(name: String, html: String): String {
+fun createComponent(name: String, html: String): String {
     val page: HTML.() -> Unit = {
         base(name) {
             unsafe {

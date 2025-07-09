@@ -6,12 +6,6 @@ import kotlin.contracts.ExperimentalContracts
 
 @HtmlTagMarker
 @OptIn(ExperimentalContracts::class)
-inline fun FlowOrInteractiveContent.details(classes: String? = null, name: String, crossinline block : DETAILS.() -> Unit = {}) {
-    DETAILS(attributesMapOf("class", classes, "name", name), consumer).visit(block)
-}
-
-@HtmlTagMarker
-@OptIn(ExperimentalContracts::class)
 inline fun FlowOrInteractiveOrPhrasingContent.iframe(
     sandbox : IframeSandbox? = null,
     classes : String? = null,
@@ -29,3 +23,14 @@ inline fun FlowOrInteractiveOrPhrasingContent.iframe(
         ), consumer
     ).visit(block)
 }
+
+fun FlowContent.loadComponent(src: String) =
+    div {
+        attributes["aria-busy"] = "true"
+        iframe(loading = "lazy") {
+            this.src = "../$src"
+            width = "0"
+            height = "0"
+            onLoad = "this.parentNode.setAttribute(\"aria-busy\", \"false\");this.replaceWith(...this.contentDocument.body.childNodes);"
+        }
+    }

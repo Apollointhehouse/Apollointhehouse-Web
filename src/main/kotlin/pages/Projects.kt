@@ -8,9 +8,8 @@ import me.apollointhehouse.components.navbar
 import me.apollointhehouse.getPinnedRepos
 import me.apollointhehouse.models.RepoInfo
 import me.apollointhehouse.utils.Markdown
-import me.apollointhehouse.utils.component
-import me.apollointhehouse.utils.details
-import me.apollointhehouse.utils.iframe
+import me.apollointhehouse.utils.createComponent
+import me.apollointhehouse.utils.loadComponent
 import me.apollointhehouse.utils.toHtml
 
 private data class Project(
@@ -25,7 +24,7 @@ private fun createProject(info: RepoInfo): Project =
         name = info.name,
         description = info.description ?: "",
         url = info.url,
-        readmeSrc = info.readme?.let { component("readme-${info.name}", Markdown(it.text).toHtml()) }
+        readmeSrc = info.readme?.let { createComponent("readme-${info.name}", Markdown(it.text).toHtml()) }
     )
 
 private val projects = getPinnedRepos()
@@ -44,7 +43,7 @@ fun HTML.projects() = base("Projects") {
                     p { +project.description }
 
                     if (project.readmeSrc != null) {
-                        details(name = "readme") {
+                        details {
                             summary {
                                 classes = setOf("outline", "secondary")
                                 strong { +"More Info" }
@@ -52,16 +51,7 @@ fun HTML.projects() = base("Projects") {
 
                             hr()
 
-                            div {
-                                attributes["aria-busy"] = "true"
-
-                                iframe(loading = "lazy") {
-                                    src = "../${project.readmeSrc}"
-                                    width = "0"
-                                    height = "0"
-                                    onLoad = "this.parentNode.replaceWith(...this.contentDocument.body.childNodes);"
-                                }
-                            }
+                            loadComponent(project.readmeSrc)
                         }
                     }
                 }
