@@ -17,7 +17,15 @@ inline fun FlowOrInteractiveOrPhrasingContent.iframe(
     classes : String? = null,
     loading: String? = null,
     name: String? = null,
+    ariaBusy: Boolean? = null,
     crossinline block : IFRAME.() -> Unit = {}
 ) {
-    IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes, "loading", loading, "name", name), consumer).visit(block)
+    IFRAME(attributesMapOf(
+        "sandbox", sandbox?.enumEncode(),
+        "class", classes,
+        "loading", loading,
+        "name", name,
+        "aria-busy", ariaBusy?.toString()
+        ), consumer
+    ).visit(block)
 }

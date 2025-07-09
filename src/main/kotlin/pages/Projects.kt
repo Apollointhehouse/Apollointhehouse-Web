@@ -52,9 +52,15 @@ fun HTML.projects() = base("Projects") {
 
                             hr()
 
-                            iframe(loading = "lazy") {
-                                src = "../${project.readmeSrc}"
-                                onLoad = "this.replaceWith(...this.contentDocument.body.childNodes);"
+                            div {
+                                attributes["aria-busy"] = "true"
+
+                                iframe(loading = "lazy") {
+                                    src = "../${project.readmeSrc}"
+                                    width = "0"
+                                    height = "0"
+                                    onLoad = "this.parentNode.replaceWith(...this.contentDocument.body.childNodes);"
+                                }
                             }
                         }
                     }
