@@ -14,7 +14,7 @@ fun HTML.index() = base("Home") {
         }
     }
 
-    main("container") {
+    content {
         article("about-me") {
             h3 { +"About Me" }
             p { +"I am a high school student from New Zealand, planning to attend the University of Auckland." }

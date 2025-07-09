@@ -26,7 +26,7 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
     }
 }
 
-fun HTML.componentBase(title: String, block: BODY.() -> Unit) {
+inline fun HTML.componentBase(title: String, crossinline block: BODY.() -> Unit) {
     lang = "en"
 
     head {
