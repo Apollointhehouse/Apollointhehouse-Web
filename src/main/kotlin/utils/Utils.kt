@@ -2,7 +2,7 @@ package me.apollointhehouse.utils
 
 import kotlinx.html.HTML
 import kotlinx.html.unsafe
-import me.apollointhehouse.components.base
+import me.apollointhehouse.components.componentBase
 import me.apollointhehouse.setupRoutes
 import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
@@ -20,7 +20,7 @@ fun Markdown.toHtml(): String {
 
 fun createComponent(name: String, html: String): String {
     val page: HTML.() -> Unit = {
-        base(name) {
+        componentBase(name) {
             unsafe {
                 +html.substringAfter("<body>").substringBefore("</body>")
             }

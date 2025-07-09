@@ -25,3 +25,15 @@ fun HTML.base(title: String, block: BODY.() -> Unit) {
         block()
     }
 }
+
+fun HTML.componentBase(title: String, block: BODY.() -> Unit) {
+    lang = "en"
+
+    head {
+        title { +title }
+    }
+
+    body {
+        block()
+    }
+}
