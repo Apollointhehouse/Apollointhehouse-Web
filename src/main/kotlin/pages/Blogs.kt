@@ -4,24 +4,59 @@ import kotlinx.html.*
 import me.apollointhehouse.components.*
 import me.apollointhehouse.models.Markdown
 import me.apollointhehouse.setupRoutes
+import me.apollointhehouse.utils.BlogMeta
 import me.apollointhehouse.utils.toHtml
 import java.io.File
 
-private fun generateBlogs(): Map<String, HTML.() -> Unit> {
+data class Blog(
+    val meta: BlogMeta,
+    val page: HTML.() -> Unit
+)
+
+private fun generateBlogs(): List<Blog> {
     val texts = File("./src/main/resources/blogs")
-        .listFiles()
-        .map { it.name.substringBefore(".md") to it.readText() }
+        .walkTopDown()
+        .filter { it.extension == "md" }
+        .map { it.readText() }
 
-    val routes = texts.associate { (name, text) ->
-        val html = Markdown(text).toHtml()
-        val page: HTML.() -> Unit = { blog(name, html) }
+    val blogs: List<Blog> = texts
+        .map { text -> parseBlogs(text) }
+        .map { (meta, html) -> Blog(meta) { blog(meta.title, html) } }
+        .also {
+            val routes = it.associate { (meta, page) -> "/blogs/${meta.title.replace(" ", "-")}" to page }
+            setupRoutes(routes)
+        }
+        .toList()
 
-        "/blogs/$name" to page
-    }
+    return blogs
+}
 
-    setupRoutes(routes)
+private operator fun Blog.compareTo(other: Blog): Int {
+    val (meta, _) = this
+    val (meta1, _) = other
 
-    return routes
+    return meta.date.compareTo(meta1.date)
+}
+
+private fun parseBlogs(text: String): Pair<BlogMeta, String> {
+    val split = text.lines().indexOfFirst { it == "---" }
+
+    val meta = text
+        .lines()
+        .take(split)
+        .associate {
+            val i = it.indexOf("=")
+            it.substring(0, i) to it.substring(i + 1)
+        }
+        .let { BlogMeta(it) }
+
+    val html = Markdown(text
+        .lines()
+        .drop(split + 1)
+        .joinToString("\n")
+    ).toHtml()
+
+    return meta to html
 }
 
 fun HTML.blogs() = base("Blogs") {
@@ -29,12 +64,20 @@ fun HTML.blogs() = base("Blogs") {
     content {
         section("blogs-list") {
             val blogs = generateBlogs()
+                .sortedWith { blog, other -> other.compareTo(blog) }
 
-            for ((route, _) in blogs) {
-                val name = route.substringAfter("/blogs/")
+            for ((meta, _) in blogs) {
+                val name = meta.title
 
                 article {
-                    a(href = name) { h2 { +name } }
+                    a(href = name.replace(" ", "-")) { h2 { +name } }
+                    nav {
+                        ul {
+                            for (tag in meta.tags) li {
+                                p { small { kbd { +tag } } }
+                            }
+                        }
+                    }
                 }
             }
         }
