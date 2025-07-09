@@ -12,7 +12,7 @@ fun HTML.base(title: String, block: BODY.() -> Unit) {
 
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css")
         link(rel="stylesheet", href="/style.css")
-        link(rel = "icon", type = "image/x-icon", href = "/images/icon.png")
+        link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.png")
 
         meta(name="description", content="A personal website for Apollointhehouse")
         meta(name="keywords", content="NZ, New Zealand, Apollointhehouse, Apollo, Kotlin, Backend, Developer, UOA, University of Auckland")
