@@ -35,7 +35,7 @@ fun FlowContent.loadComponent(name: String) =
     div {
         attributes["aria-busy"] = "true"
         iframe(loading = "lazy") {
-            src = "../components/$name"
+            src = "/components/$name"
             style = "width:0;height:0;border:0;"
             onLoad = "this.parentNode.setAttribute(\"aria-busy\", \"false\");this.replaceWith(...this.contentDocument.body.childNodes);"
         }
