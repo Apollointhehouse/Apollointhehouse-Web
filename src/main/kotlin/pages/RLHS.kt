@@ -17,7 +17,7 @@ private val downloads = listOf(
 fun HTML.rlhs() = base("RLHS Utils") {
     hero()
 
-    main(classes = "container") {
+    content {
         section("downloads-list") {
             for (download in downloads) {
                 article {

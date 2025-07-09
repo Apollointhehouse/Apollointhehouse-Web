@@ -25,10 +25,8 @@ private fun generateBlogs(): Map<String, HTML.() -> Unit> {
 }
 
 fun HTML.blogs() = base("Blogs") {
-    div("hero") {
-        navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", ""))
-    }
-    main(classes = "container") {
+    hero()
+    content {
         section("blogs-list") {
             val blogs = generateBlogs()
 

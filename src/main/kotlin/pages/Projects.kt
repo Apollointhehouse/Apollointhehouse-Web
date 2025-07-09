@@ -2,6 +2,7 @@ package me.apollointhehouse.pages
 
 import kotlinx.html.*
 import me.apollointhehouse.components.base
+import me.apollointhehouse.components.content
 import me.apollointhehouse.components.footer
 import me.apollointhehouse.components.hero
 import me.apollointhehouse.getPinnedRepos
@@ -32,7 +33,7 @@ private val projects = getPinnedRepos()
 fun HTML.projects() = base("Projects") {
     hero()
 
-    main(classes = "container") {
+    content {
         section("projects-list") {
             for (project in projects) {
                 article {

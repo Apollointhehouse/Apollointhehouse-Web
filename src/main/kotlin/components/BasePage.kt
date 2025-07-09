@@ -2,7 +2,7 @@ package me.apollointhehouse.components
 
 import kotlinx.html.*
 
-fun HTML.base(title: String, block: BODY.() -> Unit) {
+inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
     lang = "en"
 
     head {

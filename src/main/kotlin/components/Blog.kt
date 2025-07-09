@@ -5,7 +5,7 @@ import kotlinx.html.*
 fun HTML.blog(name: String, html: String) = base(name) {
     hero()
 
-    main(classes = "container") {
+    content {
         unsafe {
             +html.substringAfter("<body>").substringBefore("</body>")
         }
