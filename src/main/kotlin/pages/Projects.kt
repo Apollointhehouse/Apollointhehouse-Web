@@ -9,6 +9,7 @@ import me.apollointhehouse.getPinnedRepos
 import me.apollointhehouse.models.RepoInfo
 import me.apollointhehouse.utils.Markdown
 import me.apollointhehouse.utils.createComponent
+import me.apollointhehouse.utils.details
 import me.apollointhehouse.utils.loadComponent
 import me.apollointhehouse.utils.toHtml
 
@@ -43,7 +44,7 @@ fun HTML.projects() = base("Projects") {
                     p { +project.description }
 
                     if (project.readmeSrc != null) {
-                        details {
+                        details(name = "readme") {
                             summary {
                                 classes = setOf("outline", "secondary")
                                 strong { +"More Info" }
