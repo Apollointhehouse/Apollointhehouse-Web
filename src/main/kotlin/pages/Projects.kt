@@ -10,6 +10,7 @@ import me.apollointhehouse.models.RepoInfo
 import me.apollointhehouse.utils.Markdown
 import me.apollointhehouse.utils.component
 import me.apollointhehouse.utils.details
+import me.apollointhehouse.utils.iframe
 import me.apollointhehouse.utils.toHtml
 
 private data class Project(
@@ -51,9 +52,9 @@ fun HTML.projects() = base("Projects") {
 
                             hr()
 
-                            iframe {
+                            iframe(loading = "lazy") {
                                 src = "../${project.readmeSrc}"
-                                style="display:block; border:none; height:50vh; width:100%; border-radius:var(--pico-border-radius);"
+                                onLoad = "this.replaceWith(...this.contentDocument.body.childNodes);"
                             }
                         }
                     }

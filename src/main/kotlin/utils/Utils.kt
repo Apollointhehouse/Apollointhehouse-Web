@@ -1,7 +1,6 @@
 package me.apollointhehouse.utils
 
 import kotlinx.html.HTML
-import kotlinx.html.main
 import kotlinx.html.unsafe
 import me.apollointhehouse.components.base
 import me.apollointhehouse.setupRoutes
@@ -22,10 +21,8 @@ fun Markdown.toHtml(): String {
 fun component(name: String, html: String): String {
     val page: HTML.() -> Unit = {
         base(name) {
-            main(classes = "container") {
-                unsafe {
-                    +html.substringAfter("<body>").substringBefore("</body>")
-                }
+            unsafe {
+                +html.substringAfter("<body>").substringBefore("</body>")
             }
         }
     }
