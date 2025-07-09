@@ -31,13 +31,12 @@ inline fun FlowOrInteractiveOrPhrasingContent.iframe(
     ).visit(block)
 }
 
-fun FlowContent.loadComponent(src: String) =
+fun FlowContent.loadComponent(name: String) =
     div {
         attributes["aria-busy"] = "true"
         iframe(loading = "lazy") {
-            this.src = "../$src"
-            width = "0"
-            height = "0"
+            src = "../components/$name"
+            style = "width:0;height:0;border:0;"
             onLoad = "this.parentNode.setAttribute(\"aria-busy\", \"false\");this.replaceWith(...this.contentDocument.body.childNodes);"
         }
     }

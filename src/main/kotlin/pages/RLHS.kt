@@ -15,9 +15,8 @@ private val downloads = listOf(
 )
 
 fun HTML.rlhs() = base("RLHS Utils") {
-    div("hero") {
-        navbar(Page("Home", "../"), Page("Projects", "../projects"), Page("Blogs", "../blogs"))
-    }
+    hero()
+
     main(classes = "container") {
         section("downloads-list") {
             for (download in downloads) {

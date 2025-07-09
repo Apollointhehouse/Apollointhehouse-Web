@@ -2,8 +2,8 @@ package me.apollointhehouse.pages
 
 import kotlinx.html.*
 import me.apollointhehouse.components.*
+import me.apollointhehouse.models.Markdown
 import me.apollointhehouse.setupRoutes
-import me.apollointhehouse.utils.Markdown
 import me.apollointhehouse.utils.toHtml
 import java.io.File
 
@@ -26,7 +26,7 @@ private fun generateBlogs(): Map<String, HTML.() -> Unit> {
 
 fun HTML.blogs() = base("Blogs") {
     div("hero") {
-        navbar(Page("Home", "../"), Page("Projects", "../projects"), Page("Blogs", ""))
+        navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", ""))
     }
     main(classes = "container") {
         section("blogs-list") {

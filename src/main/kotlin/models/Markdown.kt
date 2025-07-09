@@ -3,7 +3,7 @@ package me.apollointhehouse.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Readme(
+data class Markdown(
     val text: String,
 )
 

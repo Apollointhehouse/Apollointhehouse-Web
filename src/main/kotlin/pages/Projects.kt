@@ -1,23 +1,20 @@
 package me.apollointhehouse.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.components.Page
 import me.apollointhehouse.components.base
 import me.apollointhehouse.components.footer
-import me.apollointhehouse.components.navbar
+import me.apollointhehouse.components.hero
 import me.apollointhehouse.getPinnedRepos
 import me.apollointhehouse.models.RepoInfo
-import me.apollointhehouse.utils.Markdown
-import me.apollointhehouse.utils.createComponent
 import me.apollointhehouse.utils.details
 import me.apollointhehouse.utils.loadComponent
-import me.apollointhehouse.utils.toHtml
+import me.apollointhehouse.utils.toComponent
 
 private data class Project(
     val name: String,
     val description: String,
     val url: String,
-    val readmeSrc: String?,
+    val readme: String?,
 )
 
 private fun createProject(info: RepoInfo): Project =
@@ -25,7 +22,7 @@ private fun createProject(info: RepoInfo): Project =
         name = info.name,
         description = info.description ?: "",
         url = info.url,
-        readmeSrc = info.readme?.let { createComponent("readme-${info.name}", Markdown(it.text).toHtml()) }
+        readme = info.readme?.toComponent("readme-${info.name}"),
     )
 
 private val projects = getPinnedRepos()
@@ -33,9 +30,8 @@ private val projects = getPinnedRepos()
     ?: error("Failed to get pinned repos")
 
 fun HTML.projects() = base("Projects") {
-    div("hero") {
-        navbar(Page("Home", "../"), Page("Projects", ""), Page("Blogs", "../blogs"))
-    }
+    hero()
+
     main(classes = "container") {
         section("projects-list") {
             for (project in projects) {
@@ -43,7 +39,7 @@ fun HTML.projects() = base("Projects") {
                     a(href = project.url) { h2 { +project.name } }
                     p { +project.description }
 
-                    if (project.readmeSrc != null) {
+                    if (project.readme != null) {
                         details(name = "readme") {
                             summary {
                                 classes = setOf("outline", "secondary")
@@ -52,7 +48,7 @@ fun HTML.projects() = base("Projects") {
 
                             hr()
 
-                            loadComponent(project.readmeSrc)
+                            loadComponent(project.readme)
                         }
                     }
                 }

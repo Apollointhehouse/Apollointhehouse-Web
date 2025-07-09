@@ -9,5 +9,5 @@ data class RepoInfo(
     val name: String,
     val url: String,
     @SerialName("object")
-    val readme: Readme? = null,
+    val readme: Markdown? = null,
 )

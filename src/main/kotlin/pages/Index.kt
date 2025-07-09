@@ -4,9 +4,7 @@ import kotlinx.html.*
 import me.apollointhehouse.components.*
 
 fun HTML.index() = base("Home") {
-    div("hero") {
-        navbar(Page("Home", ""), Page("Projects", "projects"), Page("Blogs", "blogs"))
-
+    hero {
         div("container") {
             hGroup {
                 p { +"Hello!" }
@@ -15,6 +13,7 @@ fun HTML.index() = base("Home") {
             }
         }
     }
+
     main("container") {
         article("about-me") {
             h3 { +"About Me" }
