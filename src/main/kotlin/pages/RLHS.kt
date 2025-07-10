@@ -10,8 +10,8 @@ private data class Download(
 )
 
 private val downloads = listOf(
-    Download("Steam Installer", "Install Steam on school computers!", "/assets/downloads/steam-install.ps1"),
-    Download("Minecraft Installer", "Install Minecraft using PrismLauncher on school computers!", "/assets/downloads/minecraft-install.ps1"),
+    Download("Steam Installer", "Install Steam on school computers!", "https://raw.githubusercontent.com/Apollointhehouse/RLHS-Utils/refs/heads/main/steam-install.ps1"),
+    Download("Minecraft Installer", "Install Minecraft using PrismLauncher on school computers!", "https://raw.githubusercontent.com/Apollointhehouse/RLHS-Utils/refs/heads/main/minecraft-install.ps1"),
 )
 
 fun HTML.rlhs() = base("RLHS Utils") {
