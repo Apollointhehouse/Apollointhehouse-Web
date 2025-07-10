@@ -9,7 +9,7 @@ fun HTML.index() = base("Home") {
             hGroup {
                 p { +"Hello!" }
                 h1 { +"I'm Apollo!" }
-                h2 { +"Kotlin Enthusiast from New Zealand" }
+                h2 { +"Hobbyist Dev from New Zealand" }
             }
         }
     }
@@ -27,13 +27,13 @@ fun HTML.index() = base("Home") {
             h4 { +"Backend:" }
             ul {
                 li { +"Languages: Kotlin, Java, Python, SQL" }
-                li { +"Frameworks: KTor, Flask, Javalin" }
+                li { +"Frameworks: KTor, Exposed ORM, Flask" }
             }
 
             h4 { +"Frontend:" }
             ul {
-                li { +"Languages: HTML, CSS, JavaScript" }
-                li { +"Frameworks: Pico Css, Tailwind" }
+                li { +"Languages: HTML, CSS, JavaScript, TypeScript" }
+                li { +"Frameworks: Pico Css" }
             }
         }
 
