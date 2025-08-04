@@ -2,6 +2,7 @@ package me.apollointhehouse.pages
 
 import kotlinx.html.*
 import me.apollointhehouse.components.*
+import me.apollointhehouse.utils.themeImg
 
 fun HTML.index() = base("Home") {
     hero {
@@ -50,35 +51,33 @@ fun HTML.index() = base("Home") {
         article("metrics") {
             h3 { +"Metrics" }
 
-            val themes = listOf(
-                StatsTheme("24273a", "cad3f5", "c6a0f6", "8bd5ca", "dark-mode"),
-                StatsTheme("eff1f5", "4c4f69", "8839ef", "179299", "light-mode")
-            )
+            themeImg(
+                themes = StatsTheme.entries,
+                alt = "Apollo's Github Stats"
+            ) { theme ->
+                media = "(prefers-color-scheme: ${theme.mode})"
+                srcset = "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en"
+            }
 
-            for (theme in themes) {
-                img(
-                    loading = ImgLoading.lazy,
-                    classes = "hide ${theme.mode}",
-                    src = "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en",
-                    alt = "Apollo's Github Stats"
-                )
-
-                img(
-                    loading = ImgLoading.lazy,
-                    classes = "hide ${theme.mode}",
-                    src = "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en",
-                    alt = "Apollo's Most Used Languages"
-                )
+            themeImg(
+                themes = StatsTheme.entries,
+                alt = "Apollo's Most Used Languages"
+            ) { theme ->
+                media = "(prefers-color-scheme: ${theme.mode})"
+                srcset = "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en"
             }
         }
     }
     footer()
 }
 
-private data class StatsTheme(
+private enum class StatsTheme(
     val bgColor: String,
     val textColor: String,
     val iconColor: String,
     val titleColor: String,
     val mode: String
-)
+) {
+    Dark("24273a", "cad3f5", "c6a0f6", "8bd5ca", "dark"),
+    Light("eff1f5", "4c4f69", "8839ef", "179299", "light")
+}
