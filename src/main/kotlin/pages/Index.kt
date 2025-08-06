@@ -1,8 +1,11 @@
 package me.apollointhehouse.pages
 
 import kotlinx.html.*
+import me.apollointhehouse.Config
 import me.apollointhehouse.components.*
 import me.apollointhehouse.utils.themeImg
+import java.io.File
+import java.net.URI
 
 fun HTML.index() = base("Home") {
     hero {
@@ -56,7 +59,7 @@ fun HTML.index() = base("Home") {
                 alt = "Apollo's Github Stats"
             ) { theme ->
                 media = "(prefers-color-scheme: ${theme.mode})"
-                srcset = "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en"
+                srcset = svgRes("stats-${theme.mode}", "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en")
             }
 
             themeImg(
@@ -64,11 +67,20 @@ fun HTML.index() = base("Home") {
                 alt = "Apollo's Most Used Languages"
             ) { theme ->
                 media = "(prefers-color-scheme: ${theme.mode})"
-                srcset = "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en"
+                srcset = svgRes("langs-${theme.mode}", "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en")
             }
         }
     }
     footer()
+}
+
+private fun svgRes(name: String, url: String): String {
+    val dir = File("${Config.base}/assets/images/$name.svg")
+    dir.createNewFile()
+
+    dir.writeText(URI(url).toURL().readText())
+
+    return "/assets/images/$name.svg"
 }
 
 private enum class StatsTheme(
