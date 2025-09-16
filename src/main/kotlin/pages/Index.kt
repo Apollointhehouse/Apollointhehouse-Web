@@ -31,19 +31,19 @@ fun HTML.index() = base("Home") {
             h4 { +"Backend:" }
             ul {
                 li { +"Languages: Kotlin, Java, Python, SQL" }
-                li { +"Frameworks: KTor, Exposed ORM, Flask" }
+                li { +"Frameworks: KTor, Exposed DAO, Flask" }
             }
 
             h4 { +"Frontend:" }
             ul {
-                li { +"Languages: HTML, CSS, JavaScript, TypeScript" }
-                li { +"Frameworks: Pico Css" }
+                li { +"Languages: Kotlin, HTML, CSS, JavaScript" }
+                li { +"Frameworks: Compose Multiplatform, Pico Css" }
             }
         }
 
         article("experience") {
             h3 { +"Experience" }
-            p { +"Currently, I have no professional experience, but I have participated in the Terrible Ideas Hackathon, where I worked effectively in a team. Additionally, I have collaborated on several shared GitHub projects with individuals of varying experience levels." }
+            p { +"I have collaborated on several shared projects with individuals of varying experience levels. Additionally I have also participated in the Terrible Ideas Hackathon." }
         }
 
         article("education") {
