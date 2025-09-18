@@ -14,11 +14,36 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
         link(rel="stylesheet", href="/style.css")
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
-        meta(name="description", content="A personal website for Apollointhehouse")
+
+
         meta(name="keywords", content="NZ, New Zealand, Apollointhehouse, Apollo, Kotlin, Backend, Developer, UOA, University of Auckland")
         meta(name="author", content="Apollointhehouse")
         meta(name="canonical", content="apollointhehouse.me")
         title { +title }
+        meta {
+            attributes["property"] = "og:title"
+            content = title
+        }
+        meta {
+            attributes["property"] = "og:title"
+            content = title
+        }
+
+        meta {
+            attributes["property"] = "og:site_name"
+            content = "Apollointhehouse"
+        }
+
+        meta {
+            attributes["property"] = "og:description"
+            content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand"
+        }
+        meta {
+            attributes["property"] = "twitter:description"
+            content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand"
+        }
+
+        meta(name="description", content="Personal website for Apollointhehouse, a hobbyist developer from New Zealand")
     }
 
     body {
