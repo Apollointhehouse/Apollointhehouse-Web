@@ -14,8 +14,6 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
         link(rel="stylesheet", href="/style.css")
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
-
-
         meta(name="keywords", content="NZ, New Zealand, Apollointhehouse, Apollo, Kotlin, Backend, Developer, UOA, University of Auckland")
         meta(name="author", content="Apollointhehouse")
         meta(name="canonical", content="apollointhehouse.me")
@@ -44,6 +42,12 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
         }
 
         meta(name="description", content="Personal website for Apollointhehouse, a hobbyist developer from New Zealand")
+
+        // verifcation
+        meta {
+            name = "google-site-verification"
+            content = "P4gfe5lTqzhiHqVu4SQL5PYaKwXKfaNCVVzWuXwZjN8"
+        }
     }
 
     body {
