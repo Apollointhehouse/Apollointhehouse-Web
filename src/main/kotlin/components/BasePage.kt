@@ -48,6 +48,10 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
             name = "google-site-verification"
             content = "P4gfe5lTqzhiHqVu4SQL5PYaKwXKfaNCVVzWuXwZjN8"
         }
+        meta {
+            name = "google-site-verification"
+            content = "HyKk6IN2a8kItbBpm2aqLYEJCHiJTiu_Pwt09nckkwE"
+        }
     }
 
     body {
