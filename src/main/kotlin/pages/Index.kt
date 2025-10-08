@@ -25,30 +25,32 @@ fun HTML.index() = base("Home") {
             p { +"I am particularly interested in backend development, especially using Kotlin." }
         }
 
-        article("skills") {
-            h3 { +"Skills" }
+        div(classes = "grid") {
+            article("skills") {
+                h3 { +"Skills" }
 
-            h4 { +"Backend:" }
-            ul {
-                li { +"Languages: Kotlin, Java, Python, SQL" }
-                li { +"Frameworks: KTor, Exposed DAO, Flask" }
+                h4 { +"Backend:" }
+                ul {
+                    li { +"Languages: Kotlin, Java, Python, SQL" }
+                    li { +"Frameworks: KTor, Exposed DAO, Flask" }
+                }
+
+                h4 { +"Frontend:" }
+                ul {
+                    li { +"Languages: Kotlin, HTML, CSS, JavaScript" }
+                    li { +"Frameworks: Compose Multiplatform, Pico Css" }
+                }
             }
 
-            h4 { +"Frontend:" }
-            ul {
-                li { +"Languages: Kotlin, HTML, CSS, JavaScript" }
-                li { +"Frameworks: Compose Multiplatform, Pico Css" }
+            article("experience") {
+                h3 { +"Experience" }
+                p { +"I have collaborated on several shared projects with individuals of varying experience levels. Additionally I have also participated in the Terrible Ideas Hackathon." }
             }
-        }
 
-        article("experience") {
-            h3 { +"Experience" }
-            p { +"I have collaborated on several shared projects with individuals of varying experience levels. Additionally I have also participated in the Terrible Ideas Hackathon." }
-        }
-
-        article("education") {
-            h3 { +"Education" }
-            p { +"Senior High School Student, planning to attend the University of Auckland." }
+            article("education") {
+                h3 { +"Education" }
+                p { +"Senior High School Student, planning to attend the University of Auckland." }
+            }
         }
 
         article("metrics") {

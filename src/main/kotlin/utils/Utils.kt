@@ -34,9 +34,7 @@ fun createComponent(name: String, html: String): String {
         }
     }
 
-    setupRoutes(mapOf(
-        "/components/$name" to page
-    ))
+    setupRoutes("/components/$name" to page)
 
     return name
 }

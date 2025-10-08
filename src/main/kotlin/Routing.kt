@@ -5,7 +5,7 @@ import kotlinx.html.html
 import kotlinx.html.stream.appendHTML
 import java.io.File
 
-fun setupRoutes(routes: Map<String, HTML.() -> Unit>) {
+fun setupRoutes(vararg routes: Pair<String, HTML.() -> Unit>) {
     for ((route, page) in routes) {
         println("Creating route: $route")
 

@@ -23,8 +23,8 @@ private fun generateBlogs(): List<Blog> {
         .map { text -> parseBlogs(text) }
         .map { (meta, html) -> Blog(meta) { blog(meta.title, html) } }
         .also {
-            val routes = it.associate { (meta, page) -> "/blogs/${meta.title.replace(" ", "-")}" to page }
-            setupRoutes(routes)
+            val routes = it.associate { (meta, page) -> "/blogs/${meta.title.replace(" ", "-")}" to page }.toList().toTypedArray()
+            setupRoutes(*routes)
         }
         .toList()
 
