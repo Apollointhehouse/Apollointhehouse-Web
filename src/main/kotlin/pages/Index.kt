@@ -26,6 +26,7 @@ fun HTML.index() = base("Home") {
         }
 
         div(classes = "grid") {
+            id = "home-grid"
             article("skills") {
                 h3 { +"Skills" }
 
