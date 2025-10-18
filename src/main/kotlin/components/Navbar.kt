@@ -12,6 +12,8 @@ fun FlowContent.navbar(vararg pages: Page) = nav("container-fluid") {
     }
 
     ul {
+        attributes["hx-boost"] = "true"
+
         for (page in pages) {
             li {
                 a {

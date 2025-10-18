@@ -29,8 +29,6 @@ private val projects = getPinnedRepos()
     ?: error("Failed to get pinned repos")
 
 fun HTML.projects() = base("Projects") {
-    script { src = "https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js" }
-
     hero()
 
     content {
