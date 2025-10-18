@@ -19,13 +19,14 @@ fun HTML.rlhs() = base("RLHS Utils") {
 
     content {
         section("downloads-list") {
-            for (download in downloads) {
+            for ((name, description, url) in downloads) {
                 article {
-                    a(href = download.url) { h2 { +download.name } }
-                    p { +download.description }
+                    a(href = url) { h2 { +name } }
+                    p { +description }
                 }
             }
         }
     }
+
     footer()
 }

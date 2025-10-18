@@ -1,13 +1,15 @@
 package me.apollointhehouse
 
 import me.apollointhehouse.pages.*
+import me.apollointhehouse.utils.routing
+import me.apollointhehouse.utils.setupResources
 
 fun main(args: Array<String>) {
-    Config.pat = args.getOrNull(0) ?: error("Missing PAT!")
+    Config.pat = requireNotNull(args.firstOrNull()) { "Missing PAT!" }
 
     setupResources()
 
-    setupRoutes(
+    routing(
         "/" to { index() },
         "/projects" to { projects() },
         "/blogs" to { blogs() },

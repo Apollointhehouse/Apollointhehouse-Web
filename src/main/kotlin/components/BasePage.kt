@@ -58,15 +58,3 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
         block()
     }
 }
-
-inline fun HTML.componentBase(title: String, crossinline block: BODY.() -> Unit) {
-    lang = "en"
-
-    head {
-        title { +title }
-    }
-
-    body {
-        block()
-    }
-}

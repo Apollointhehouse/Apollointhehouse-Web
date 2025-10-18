@@ -1,11 +1,12 @@
-package me.apollointhehouse
+package me.apollointhehouse.utils
 
 import kotlinx.html.HTML
 import kotlinx.html.html
 import kotlinx.html.stream.appendHTML
+import me.apollointhehouse.Config
 import java.io.File
 
-fun setupRoutes(vararg routes: Pair<String, HTML.() -> Unit>) {
+fun routing(vararg routes: Pair<String, HTML.() -> Unit>) {
     for ((route, page) in routes) {
         println("Creating route: $route")
 

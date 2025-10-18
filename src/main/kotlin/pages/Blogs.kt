@@ -3,13 +3,13 @@ package me.apollointhehouse.pages
 import kotlinx.html.*
 import me.apollointhehouse.components.*
 import me.apollointhehouse.models.Markdown
-import me.apollointhehouse.setupRoutes
-import me.apollointhehouse.utils.BlogMeta
+import me.apollointhehouse.utils.routing
+import me.apollointhehouse.utils.BlogData
 import me.apollointhehouse.utils.toHtml
 import java.io.File
 
 data class Blog(
-    val meta: BlogMeta,
+    val meta: BlogData,
     val page: HTML.() -> Unit
 )
 
@@ -24,7 +24,7 @@ private fun generateBlogs(): List<Blog> {
         .map { (meta, html) -> Blog(meta) { blog(meta.title, html) } }
         .also {
             val routes = it.associate { (meta, page) -> "/blogs/${meta.title.replace(" ", "-")}" to page }.toList().toTypedArray()
-            setupRoutes(*routes)
+            routing(*routes)
         }
         .toList()
 
@@ -38,7 +38,7 @@ private operator fun Blog.compareTo(other: Blog): Int {
     return meta.date.compareTo(meta1.date)
 }
 
-private fun parseBlogs(text: String): Pair<BlogMeta, String> {
+private fun parseBlogs(text: String): Pair<BlogData, String> {
     val split = text.lines().indexOfFirst { it == "---" }
 
     val meta = text
@@ -48,7 +48,7 @@ private fun parseBlogs(text: String): Pair<BlogMeta, String> {
             val i = it.indexOf("=")
             it.substring(0, i) to it.substring(i + 1)
         }
-        .let { BlogMeta(it) }
+        .let { BlogData(it) }
 
     val html = Markdown(text
         .lines()
