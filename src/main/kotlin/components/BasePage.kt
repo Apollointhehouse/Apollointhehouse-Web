@@ -16,7 +16,7 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
 
         meta(name="keywords", content="NZ, New Zealand, Apollointhehouse, Apollo, Kotlin, Backend, Developer, UOA, University of Auckland")
         meta(name="author", content="Apollointhehouse")
-        meta(name="canonical", content="apollointhehouse.me")
+        meta(name="canonical", content="apollointhehouse.dev")
         title { +title }
         meta {
             attributes["property"] = "og:title"
