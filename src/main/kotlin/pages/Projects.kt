@@ -7,8 +7,7 @@ import me.apollointhehouse.components.footer
 import me.apollointhehouse.components.hero
 import me.apollointhehouse.getPinnedRepos
 import me.apollointhehouse.models.RepoInfo
-import me.apollointhehouse.utils.details
-import me.apollointhehouse.utils.toComponent
+import me.apollointhehouse.utils.*
 
 private data class Project(
     val name: String,
@@ -52,9 +51,9 @@ fun HTML.projects() = base("Projects") {
                                 style = "max-height: 50vh"
 
                                 div {
-                                    attributes["hx-trigger"] = "load"
-                                    attributes["hx-get"] = "/components/${project.component}"
-                                    attributes["hx-swap"] = "outerHTML"
+                                    hxTrigger = "load"
+                                    hxGet = "/components/${project.component}"
+                                    hxSwap = "outerHTML"
                                     attributes["aria-busy"] = "true"
                                 }
                             }

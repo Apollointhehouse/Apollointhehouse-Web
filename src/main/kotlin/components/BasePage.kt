@@ -1,7 +1,7 @@
 package me.apollointhehouse.components
 
 import kotlinx.html.*
-import me.apollointhehouse.utils.htmx
+import me.apollointhehouse.utils.Resources
 
 inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
     lang = "en"
@@ -11,7 +11,7 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
         meta(name="viewport", content="width=device-width, initial-scale=1")
         meta(name="color-scheme", content="light dark")
 
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css")
+        link(rel="stylesheet", href=Resources.picoCSS)
         link(rel="stylesheet", href="/style.css")
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
@@ -56,7 +56,7 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
     }
 
     body {
-        script { src = htmx }
+        script { src = Resources.htmx }
 
         block()
     }

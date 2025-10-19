@@ -5,6 +5,7 @@ import me.apollointhehouse.components.*
 import me.apollointhehouse.models.Markdown
 import me.apollointhehouse.utils.routing
 import me.apollointhehouse.utils.BlogData
+import me.apollointhehouse.utils.hxBoost
 import me.apollointhehouse.utils.toHtml
 import java.io.File
 
@@ -63,6 +64,8 @@ fun HTML.blogs() = base("Blogs") {
     hero()
     content {
         section("blogs-list") {
+            hxBoost = true
+
             val blogs = generateBlogs()
                 .sortedWith { blog, other -> other.compareTo(blog) }
 

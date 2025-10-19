@@ -1,14 +1,33 @@
 package me.apollointhehouse.utils
 
-import me.apollointhehouse.Config
-import java.io.File
-import java.net.URI
+import kotlinx.html.FlowContent
 
-val htmx: String by lazy {
-    val dir = File("${Config.base}/htmx.min.js")
-    dir.createNewFile()
+var FlowContent.hxBoost: Boolean
+    get() = attributes["hx-boost"].toBoolean()
+    set(value) {
+        attributes["hx-boost"] = value.toString()
+    }
 
-    dir.writeText(URI("https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js").toURL().readText())
+var FlowContent.hxGet: String
+    get() = attributes["hx-get"] ?: ""
+    set(value) {
+        attributes["hx-get"] = value
+    }
 
-    "htmx.min.js"
-}
+var FlowContent.hxSwap: String
+    get() = attributes["hx-swap"] ?: ""
+    set(value) {
+        attributes["hx-swap"] = value
+    }
+
+var FlowContent.hxTarget: String
+    get() = attributes["hx-target"] ?: ""
+    set(value) {
+        attributes["hx-target"] = value
+    }
+
+var FlowContent.hxTrigger: String
+    get() = attributes["hx-trigger"] ?: ""
+    set(value) {
+        attributes["hx-trigger"] = value
+    }
