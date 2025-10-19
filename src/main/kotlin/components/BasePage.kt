@@ -1,6 +1,7 @@
 package me.apollointhehouse.components
 
 import kotlinx.html.*
+import me.apollointhehouse.utils.htmx
 
 inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
     lang = "en"
@@ -55,7 +56,7 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
     }
 
     body {
-        script { src = "https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js" }
+        script { src = htmx }
 
         block()
     }
