@@ -14,6 +14,6 @@ object Resources {
 
         dir.writeText(URI(url).toURL().readText())
 
-        return name
+        return "/$name"
     }
 }
