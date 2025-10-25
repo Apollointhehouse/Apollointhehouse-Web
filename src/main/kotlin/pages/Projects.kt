@@ -26,6 +26,7 @@ private val projects = getPinnedRepos()
     ?.map { repo -> createProject(repo) }
     ?.toSet()
     ?.filter { "show-project" in it.topics }
+    ?.sortedByDescending { it.stars }
     ?: error("Failed to get pinned repos")
 
 fun HTML.projects() = base("Projects") {
