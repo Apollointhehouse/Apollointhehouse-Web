@@ -15,8 +15,6 @@ private val downloads = listOf(
 )
 
 fun HTML.rlhs() = base("RLHS Utils") {
-    hero()
-
     content {
         section("downloads-list") {
             for ((name, description, url) in downloads) {
@@ -27,6 +25,4 @@ fun HTML.rlhs() = base("RLHS Utils") {
             }
         }
     }
-
-    footer()
 }

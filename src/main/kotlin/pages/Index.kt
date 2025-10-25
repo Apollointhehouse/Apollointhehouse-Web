@@ -1,14 +1,14 @@
 package me.apollointhehouse.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.Config
+import me.apollointhehouse.Config.readmeStatsAPI
 import me.apollointhehouse.components.*
+import me.apollointhehouse.utils.Resources.imgDownload
+import me.apollointhehouse.utils.Theme
 import me.apollointhehouse.utils.themeImg
-import java.io.File
-import java.net.URI
 
 fun HTML.index() = base("Home") {
-    hero {
+    div("hero") {
         div("container") {
             hGroup {
                 p { +"Hello!" }
@@ -59,31 +59,27 @@ fun HTML.index() = base("Home") {
 
             themeImg(
                 themes = StatsTheme.entries,
-                alt = "Apollo's Github Stats"
+                name = "Apollo's Github Stats"
             ) { theme ->
-                media = "(prefers-color-scheme: ${theme.mode})"
-                srcset = svgRes("stats-${theme.mode}", "https://github-readme-stats-one-orcin.vercel.app/api?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en")
+                imgDownload(
+                    "stats-${theme.mode}",
+                    "$readmeStatsAPI?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en",
+                    "svg"
+                )
             }
 
             themeImg(
                 themes = StatsTheme.entries,
-                alt = "Apollo's Most Used Languages"
+                name = "Apollo's Most Used Languages"
             ) { theme ->
-                media = "(prefers-color-scheme: ${theme.mode})"
-                srcset = svgRes("langs-${theme.mode}", "https://github-readme-stats-one-orcin.vercel.app/api/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en")
+                imgDownload(
+                    "langs-${theme.mode}",
+                    "$readmeStatsAPI/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en",
+                    "svg"
+                )
             }
         }
     }
-    footer()
-}
-
-private fun svgRes(name: String, url: String): String {
-    val dir = File("${Config.base}/assets/images/$name.svg")
-    dir.createNewFile()
-
-    dir.writeText(URI(url).toURL().readText())
-
-    return "/assets/images/$name.svg"
 }
 
 private enum class StatsTheme(
@@ -91,8 +87,8 @@ private enum class StatsTheme(
     val textColor: String,
     val iconColor: String,
     val titleColor: String,
-    val mode: String
-) {
+    override val mode: String
+) : Theme {
     Dark("24273a", "cad3f5", "c6a0f6", "8bd5ca", "dark"),
     Light("eff1f5", "4c4f69", "8839ef", "179299", "light")
 }

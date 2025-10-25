@@ -1,0 +1,22 @@
+{
+  user(login: "Apollointhehouse") {
+    repositories(affiliations: [OWNER], first:50) {
+      edges {
+        node {
+          name
+          description
+          url
+          stargazerCount
+          repositoryTopics(first: 10) {
+          	nodes {
+          	  topic {
+          	  	name
+          	  }
+          	  url
+          	}
+          }
+        }
+      }
+    }
+  }
+}

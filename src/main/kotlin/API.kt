@@ -11,14 +11,16 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import me.apollointhehouse.models.GraphQLQuery
-import me.apollointhehouse.models.RepoHolder
-import me.apollointhehouse.models.UserData
+import models.v2.Repo
+import models.v2.UserData
+import java.io.File
 
 private val client: HttpClient = HttpClient(CIO) {
     install(ContentNegotiation) {
         json(Json {
             prettyPrint = true
             isLenient = true
+            ignoreUnknownKeys = true
         })
     }
 
@@ -27,32 +29,9 @@ private val client: HttpClient = HttpClient(CIO) {
     }
 }
 
-private val query = """    
-    {
-      search(first: 100, type: REPOSITORY, query: "topic:show-project user:Apollointhehouse") {
-        pageInfo {
-          hasNextPage
-          endCursor
-          }
-        repos: edges {
-          repo: node {
-            ... on Repository {
-              name
-              description
-              url
-              object(expression: "HEAD:README.md") {
-                ... on Blob {
-                  text
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-""".trimIndent()
+private val githubQuery = File("./src/main/resources/api/GithubQuery").readText()
 
-fun getPinnedRepos(): List<RepoHolder>? = runBlocking {
+fun getPinnedRepos(): List<Repo>? = runBlocking {
     val res = client.post("https://api.github.com/graphql") {
         contentType(ContentType.Application.Json)
         headers {
@@ -60,11 +39,11 @@ fun getPinnedRepos(): List<RepoHolder>? = runBlocking {
             append(HttpHeaders.UserAgent, "Ktor Client")
         }
 
-        setBody(GraphQLQuery(query))
+        setBody(GraphQLQuery(githubQuery))
     }
 
     if (res.status.isSuccess()) {
         val res = res.body<UserData>()
-        res.data.search.repos
+        res.data.user.repositories.edges.map { it.node }
     } else null
 }

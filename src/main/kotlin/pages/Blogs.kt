@@ -61,7 +61,6 @@ private fun parseBlogs(text: String): Pair<BlogData, String> {
 }
 
 fun HTML.blogs() = base("Blogs") {
-    hero()
     content {
         section("blogs-list") {
             hxBoost = true
@@ -85,5 +84,4 @@ fun HTML.blogs() = base("Blogs") {
             }
         }
     }
-    footer()
 }

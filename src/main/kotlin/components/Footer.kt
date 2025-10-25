@@ -1,6 +1,7 @@
 package me.apollointhehouse.components
 
 import kotlinx.html.*
+import me.apollointhehouse.utils.Theme
 import me.apollointhehouse.utils.themeImg
 
 private val socials = listOf(
@@ -30,10 +31,9 @@ fun FlowContent.footer() = footer {
                     a(href = social.url, classes = "contrast", target = "_blank") {
                         themeImg(
                             themes = SocialTheme.entries,
-                            alt = social.name
+                            name = social.name
                         ) { theme ->
-                            media = "(prefers-color-scheme: ${theme.mode})"
-                            srcset = "/assets/images/${theme.mode}-${social.icon}"
+                            "/assets/images/${theme.mode}-${social.icon}"
                         }
                     }
                 }
@@ -43,8 +43,8 @@ fun FlowContent.footer() = footer {
 }
 
 private enum class SocialTheme(
-    val mode: String,
-) {
+    override val mode: String,
+) : Theme {
     Dark("dark"),
     Light("light")
 }

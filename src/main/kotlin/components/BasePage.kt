@@ -57,7 +57,11 @@ inline fun HTML.base(title: String, crossinline block: BODY.() -> Unit) {
 
     body {
         script { src = Resources.htmx }
+        div("header") {
+            navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", "/blogs"))
+        }
 
         block()
+        footer()
     }
 }

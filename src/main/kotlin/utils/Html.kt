@@ -9,16 +9,17 @@ inline fun FlowOrInteractiveContent.details(classes: String? = null, name: Strin
     DETAILS(attributesMapOf("class", classes, "name", name), consumer).visit(block)
 }
 
-fun <T> FlowContent.themeImg(themes: Iterable<T>, alt: String = "", block:  SOURCE.(T) -> Unit) {
+inline fun <T : Theme> FlowContent.themeImg(themes: Iterable<T>, name: String = "", crossinline block:  (T) -> String) {
     picture {
         for (theme in themes) {
             source {
-                block(theme)
+                media = "(prefers-color-scheme: ${theme.mode})"
+                srcset = block(theme)
             }
         }
         img {
             src = "#"
-            this@img.alt = alt
+            alt = name
             loading = ImgLoading.lazy
         }
     }
