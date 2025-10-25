@@ -1,8 +1,5 @@
 package me.apollointhehouse.utils
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import me.apollointhehouse.Config
 import java.io.File
 import java.net.URI

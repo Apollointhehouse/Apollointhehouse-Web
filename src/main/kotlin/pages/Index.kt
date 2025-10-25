@@ -1,7 +1,7 @@
 package me.apollointhehouse.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.Config.readmeStatsAPI
+import me.apollointhehouse.Config.README_STATS_API
 import me.apollointhehouse.components.*
 import me.apollointhehouse.utils.Resources.imgDownload
 import me.apollointhehouse.utils.Theme
@@ -64,7 +64,7 @@ fun HTML.index() = base("Home") {
             ) { theme ->
                 imgDownload(
                     "stats-${theme.mode}",
-                    "$readmeStatsAPI?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en",
+                    "$README_STATS_API?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&locale=en",
                     "svg"
                 )
             }
@@ -75,7 +75,7 @@ fun HTML.index() = base("Home") {
             ) { theme ->
                 imgDownload(
                     "langs-${theme.mode}",
-                    "$readmeStatsAPI/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en",
+                    "$README_STATS_API/top-langs?username=apollointhehouse&show_icons=true&bg_color=${theme.bgColor}&text_color=${theme.textColor}&icon_color=${theme.iconColor}&title_color=${theme.titleColor}&hide_border=false&layout=compact&locale=en",
                     "svg"
                 )
             }
