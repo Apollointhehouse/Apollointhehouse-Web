@@ -9,6 +9,13 @@ inline fun FlowOrInteractiveContent.details(classes: String? = null, name: Strin
     DETAILS(attributesMapOf("class", classes, "name", name), consumer).visit(block)
 }
 
+@HtmlTagMarker
+@OptIn(ExperimentalContracts::class)
+inline fun SectioningOrFlowContent.article(classes: String? = null, id: String? = null, crossinline block : ARTICLE.() -> Unit = {}) {
+    ARTICLE(attributesMapOf("class", classes, "id", id), consumer).visit(block)
+}
+
+
 inline fun <T : Theme> FlowContent.themeImg(themes: Iterable<T>, name: String = "", crossinline block:  (T) -> String) {
     picture {
         for (theme in themes) {

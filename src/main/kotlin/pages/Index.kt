@@ -5,6 +5,7 @@ import me.apollointhehouse.Config.readmeStatsAPI
 import me.apollointhehouse.components.*
 import me.apollointhehouse.utils.Resources.imgDownload
 import me.apollointhehouse.utils.Theme
+import me.apollointhehouse.utils.article
 import me.apollointhehouse.utils.themeImg
 
 fun HTML.index() = base("Home") {
@@ -19,7 +20,7 @@ fun HTML.index() = base("Home") {
     }
 
     content {
-        article("about-me") {
+        article(id = "about-me") {
             h3 { +"About Me" }
             p { +"I am a high school student from New Zealand, planning to attend the University of Auckland." }
             p { +"I am particularly interested in backend development, especially using Kotlin." }
@@ -27,7 +28,7 @@ fun HTML.index() = base("Home") {
 
         div(classes = "grid") {
             id = "home-grid"
-            article("skills") {
+            article(id = "skills") {
                 h3 { +"Skills" }
 
                 h4 { +"Backend:" }
@@ -43,18 +44,18 @@ fun HTML.index() = base("Home") {
                 }
             }
 
-            article("experience") {
+            article(id = "experience") {
                 h3 { +"Experience" }
                 p { +"I have collaborated on several shared projects with individuals of varying experience levels. Additionally I have also participated in the Terrible Ideas Hackathon." }
             }
 
-            article("education") {
+            article(id = "education") {
                 h3 { +"Education" }
                 p { +"Senior High School Student, planning to attend the University of Auckland." }
             }
         }
 
-        article("metrics") {
+        article(id = "metrics") {
             h3 { +"Metrics" }
 
             themeImg(
