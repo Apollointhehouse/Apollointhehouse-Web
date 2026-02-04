@@ -59,7 +59,7 @@ fun HTML.index() =
                     p {
                         +
                             """
-                            I have worked on server java/kotlin based mods for a forked version of Minecraft, 
+                            I have worked on several java/kotlin based mods for a forked version of Minecraft, 
                             I also work on a *cheat client* for this game, 
                             which has given me an understanding of exploits in network related code.
                             """.trimIndent()
