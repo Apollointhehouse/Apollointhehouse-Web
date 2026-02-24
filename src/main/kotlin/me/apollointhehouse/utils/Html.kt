@@ -1,10 +1,8 @@
 package me.apollointhehouse.utils
 
 import kotlinx.html.*
-import kotlin.contracts.ExperimentalContracts
 
 @HtmlTagMarker
-@OptIn(ExperimentalContracts::class)
 inline fun SectioningOrFlowContent.article(
     classes: String? = null,
     id: String? = null,
