@@ -44,7 +44,7 @@ fun HTML.index() =
                     h4 { +"Backend and Game Modding:" }
                     ul {
                         li { +"Languages: Kotlin, Java, Python, SQL" }
-                        li { +"Frameworks: KTor, Exposed DAO, Flask" }
+                        li { +"Frameworks: KTor, Exposed DAO, Flask, Fabric, Sponge Mixin" }
                     }
 
                     h4 { +"Frontend:" }
@@ -60,8 +60,8 @@ fun HTML.index() =
                         +
                             """
                             I have worked on several java/kotlin based mods for a forked version of Minecraft, 
-                            I also work on a *cheat client* for this game, 
-                            which has given me an understanding of exploits in network related code.
+                            which has given me an understanding of how to work with legacy code bases
+                            and network related code.
                             """.trimIndent()
                             .split("\n")
                             .joinToString(" ")
@@ -76,7 +76,7 @@ fun HTML.index() =
                 article(id = "education") {
                     h3 { +"Education" }
                     p { +"First-year student attending University of Auckland." }
-                    p { +"Doing a Bachelor of Science, majoring in Computer Science." }
+                    p { +"Taking a BsC in Computer Science." }
                 }
             }
 

@@ -14,7 +14,6 @@ fun main(args: Array<String>) {
         "/projects" to { projects() },
         "/blogs" to { blogs() },
         "/test" to { test() },
-        "/rlhs" to { rlhs() },
     )
 
     println("Done!")
