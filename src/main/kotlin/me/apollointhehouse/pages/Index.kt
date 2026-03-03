@@ -28,8 +28,8 @@ fun HTML.index() =
                 p {
                     +
                         """
-                        I have experience in game modding using java/kotlin, 
-                        I am very interested in getting into embedded development and robotics.
+                        I have experience in game modding using java/kotlin and in working on collaborative projects with others, 
+                        I am very interested in the application to software to real world issues
                         """.trimIndent()
                         .split("\n")
                         .joinToString("\n")
@@ -43,13 +43,13 @@ fun HTML.index() =
 
                     h4 { +"Backend and Game Modding:" }
                     ul {
-                        li { +"Languages: Kotlin, Java, Python, SQL" }
+                        li { +"Languages: Java, Python, Kotlin, SQL" }
                         li { +"Frameworks: KTor, Exposed DAO, Flask, Fabric, Sponge Mixin" }
                     }
 
                     h4 { +"Frontend:" }
                     ul {
-                        li { +"Languages: Kotlin, HTML, CSS, JavaScript" }
+                        li { +"Languages: HTML, CSS, JavaScript" }
                         li { +"Frameworks: Compose Multiplatform, Pico CSS" }
                     }
                 }
@@ -61,7 +61,7 @@ fun HTML.index() =
                             """
                             I have worked on several java/kotlin based mods for a forked version of Minecraft, 
                             which has given me an understanding of how to work with legacy code bases
-                            and network related code.
+                            and how to solve/workaround issues in software development.
                             """.trimIndent()
                             .split("\n")
                             .joinToString(" ")
@@ -77,6 +77,8 @@ fun HTML.index() =
                     h3 { +"Education" }
                     p { +"First-year student attending University of Auckland." }
                     p { +"Taking a BsC in Computer Science." }
+
+                    p { +"In my last year of high school I was one of the few students to receive NCEA scholarship Digital Technologies." }
                 }
             }
 
