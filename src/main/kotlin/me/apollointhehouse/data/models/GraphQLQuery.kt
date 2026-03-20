@@ -1,4 +1,4 @@
-package me.apollointhehouse.models
+package me.apollointhehouse.data.models
 
 import kotlinx.serialization.Serializable
 

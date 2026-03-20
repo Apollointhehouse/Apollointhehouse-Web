@@ -1,4 +1,4 @@
-package me.apollointhehouse.utils
+package me.apollointhehouse.ui.components.utils
 
 import kotlinx.html.FlowContent
 

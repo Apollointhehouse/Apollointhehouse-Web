@@ -1,17 +1,13 @@
-package me.apollointhehouse.utils
+package me.apollointhehouse.ui.components
 
-import kotlinx.html.*
+import kotlinx.html.FlowContent
+import kotlinx.html.ImgLoading
+import kotlinx.html.img
+import kotlinx.html.picture
+import kotlinx.html.source
+import me.apollointhehouse.ui.components.utils.Theme
 
-@HtmlTagMarker
-inline fun SectioningOrFlowContent.article(
-    classes: String? = null,
-    id: String? = null,
-    crossinline block: ARTICLE.() -> Unit = {},
-) {
-    ARTICLE(attributesMapOf("class", classes, "id", id), consumer).visit(block)
-}
-
-inline fun <T : Theme> FlowContent.themeImg(
+inline fun <T : Theme> FlowContent.themedImg(
     themes: Iterable<T>,
     name: String = "",
     crossinline block: (T) -> String,

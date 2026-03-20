@@ -1,6 +1,6 @@
-package me.apollointhehouse.utils
+package me.apollointhehouse.data.blogs
 
-import me.apollointhehouse.models.Markdown
+import me.apollointhehouse.data.models.Markdown
 import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser

@@ -1,13 +1,13 @@
-package me.apollointhehouse.pages
+package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.Config.README_STATS_API
-import me.apollointhehouse.components.base
-import me.apollointhehouse.components.content
-import me.apollointhehouse.utils.Resources.imgDownload
-import me.apollointhehouse.utils.Theme
-import me.apollointhehouse.utils.article
-import me.apollointhehouse.utils.themeImg
+import me.apollointhehouse.data.Config.README_STATS_API
+import me.apollointhehouse.data.Resources.download
+import me.apollointhehouse.ui.components.base
+import me.apollointhehouse.ui.components.content
+import me.apollointhehouse.ui.components.utils.Theme
+import me.apollointhehouse.ui.components.utils.article
+import me.apollointhehouse.ui.components.themedImg
 
 fun HTML.index() =
     base("Home") {
@@ -85,65 +85,46 @@ fun HTML.index() =
             article(id = "metrics") {
                 h3 { +"Metrics" }
 
-                themeImg(
+                themedImg(
                     themes = StatsTheme.entries,
                     name = "Apollo's Github Stats",
-                ) { statsImg(it) }
+                ) { it.statsGraph() }
 
-                themeImg(
+                themedImg(
                     themes = StatsTheme.entries,
                     name = "Apollo's Most Used Languages",
-                ) { langsImg(it) }
+                ) { it.languageGraph() }
             }
         }
     }
 
-private fun statsImg(theme: StatsTheme) =
-    imgDownload(
-        "stats-${theme.mode}",
-        """
-        $README_STATS_API?
-        username=apollointhehouse&
-        show_icons=true&
-        bg_color=${theme.bgColor}&
-        text_color=${theme.textColor}&
-        icon_color=${theme.iconColor}&
-        title_color=${theme.titleColor}&
-        hide_border=false&
-        locale=en
-        """.trimIndent()
-            .split("\n")
-            .joinToString(""),
-        "svg",
-    )
 
-private fun langsImg(theme: StatsTheme) =
-    imgDownload(
-        "langs-${theme.mode}",
-        """
-        $README_STATS_API/top-langs?
-        username=apollointhehouse&
-        show_icons=true&
-        bg_color=${theme.bgColor}&
-        text_color=${theme.textColor}&
-        icon_color=${theme.iconColor}&
-        title_color=${theme.titleColor}&
-        hide_border=false&
-        layout=compact&
-        locale=en
-        """.trimIndent()
-            .split("\n")
-            .joinToString(""),
-        "svg",
-    )
+
 
 private enum class StatsTheme(
-    val bgColor: String,
-    val textColor: String,
-    val iconColor: String,
-    val titleColor: String,
+    bgColor: String,
+    textColor: String,
+    iconColor: String,
+    titleColor: String,
     override val mode: String,
 ) : Theme {
     Dark("24273a", "cad3f5", "c6a0f6", "8bd5ca", "dark"),
-    Light("eff1f5", "4c4f69", "8839ef", "179299", "light"),
+    Light("eff1f5", "4c4f69", "8839ef", "179299", "light");
+
+    private val languageQuery = "${README_STATS_API}/top-langs?username=apollointhehouse&show_icons=true&bg_color=${bgColor}&text_color=${textColor}&icon_color=${iconColor}&title_color=${titleColor}&hide_border=false&layout=compact&locale=en"
+    private val statsQuery = "${README_STATS_API}?username=apollointhehouse&show_icons=true&bg_color=${bgColor}&text_color=${textColor}&icon_color=${iconColor}&title_color=${titleColor}&hide_border=false&locale=en"
+
+    fun languageGraph() = download(
+        name = "langs-$mode",
+        url = languageQuery,
+        path = "/assets/images",
+        ext = "svg"
+    )
+
+    fun statsGraph() = download(
+        name = "stats-$mode",
+        url = statsQuery,
+        path = "/assets/images",
+        ext = "svg",
+    )
 }

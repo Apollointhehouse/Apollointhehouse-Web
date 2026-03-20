@@ -1,9 +1,8 @@
-package me.apollointhehouse.utils
+package me.apollointhehouse.data
 
 import kotlinx.html.HTML
 import kotlinx.html.html
 import kotlinx.html.stream.appendHTML
-import me.apollointhehouse.Config
 import java.io.File
 
 fun routing(vararg routes: Pair<String, HTML.() -> Unit>) {

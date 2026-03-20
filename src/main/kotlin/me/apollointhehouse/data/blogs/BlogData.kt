@@ -1,4 +1,4 @@
-package me.apollointhehouse.utils
+package me.apollointhehouse.data.blogs
 
 import java.text.SimpleDateFormat
 import java.util.*

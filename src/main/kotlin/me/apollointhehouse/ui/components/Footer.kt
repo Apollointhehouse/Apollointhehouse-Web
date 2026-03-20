@@ -1,8 +1,7 @@
-package me.apollointhehouse.components
+package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.utils.Theme
-import me.apollointhehouse.utils.themeImg
+import me.apollointhehouse.ui.components.utils.Theme
 
 private val socials =
     listOf(
@@ -31,7 +30,7 @@ fun FlowContent.footer() =
                 for (social in socials) {
                     li("social") {
                         a(href = social.url, classes = "contrast", target = "_blank") {
-                            themeImg(
+                            themedImg(
                                 themes = SocialTheme.entries,
                                 name = social.name,
                             ) { theme ->

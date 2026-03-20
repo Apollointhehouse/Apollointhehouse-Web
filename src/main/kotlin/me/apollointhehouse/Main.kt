@@ -1,12 +1,13 @@
 package me.apollointhehouse
 
-import me.apollointhehouse.pages.*
-import me.apollointhehouse.utils.routing
-import me.apollointhehouse.utils.setupResources
+import me.apollointhehouse.ui.pages.blogs
+import me.apollointhehouse.ui.pages.index
+import me.apollointhehouse.ui.pages.projects
+import me.apollointhehouse.ui.pages.test
+import me.apollointhehouse.data.routing
+import me.apollointhehouse.data.setupResources
 
-fun main(args: Array<String>) {
-    Config.pat = requireNotNull(args.firstOrNull()) { "Missing PAT!" }
-
+fun main() {
     setupResources()
 
     routing(

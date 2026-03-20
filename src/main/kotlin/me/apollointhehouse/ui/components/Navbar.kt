@@ -1,7 +1,7 @@
-package me.apollointhehouse.components
+package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.utils.hxBoost
+import me.apollointhehouse.ui.components.utils.hxBoost
 
 data class Page(
     val name: String,

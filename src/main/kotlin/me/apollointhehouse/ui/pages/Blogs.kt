@@ -1,15 +1,17 @@
-package me.apollointhehouse.pages
+package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.components.*
-import me.apollointhehouse.models.Markdown
-import me.apollointhehouse.utils.BlogData
-import me.apollointhehouse.utils.hxBoost
-import me.apollointhehouse.utils.routing
-import me.apollointhehouse.utils.toHtml
+import me.apollointhehouse.data.models.Markdown
+import me.apollointhehouse.ui.components.base
+import me.apollointhehouse.ui.components.blog
+import me.apollointhehouse.ui.components.content
+import me.apollointhehouse.data.blogs.BlogData
+import me.apollointhehouse.ui.components.utils.hxBoost
+import me.apollointhehouse.data.routing
+import me.apollointhehouse.data.blogs.toHtml
 import java.io.File
 
-data class Blog(
+private data class Blog(
     val meta: BlogData,
     val page: HTML.() -> Unit,
 )

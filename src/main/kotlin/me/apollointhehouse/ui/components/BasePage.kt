@@ -1,7 +1,7 @@
-package me.apollointhehouse.components
+package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.utils.Resources
+import me.apollointhehouse.data.Resources
 
 inline fun HTML.base(
     title: String,

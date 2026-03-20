@@ -1,7 +1,7 @@
-package me.apollointhehouse.pages
+package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.components.*
+import me.apollointhehouse.ui.components.base
 
 fun HTML.test() =
     base("Test") {

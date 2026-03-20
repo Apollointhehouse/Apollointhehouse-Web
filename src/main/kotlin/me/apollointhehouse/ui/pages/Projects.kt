@@ -1,9 +1,9 @@
-package me.apollointhehouse.pages
+package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.components.base
-import me.apollointhehouse.components.content
-import me.apollointhehouse.getPinnedRepos
+import me.apollointhehouse.ui.components.base
+import me.apollointhehouse.ui.components.content
+import me.apollointhehouse.data.API
 import models.v2.Repo
 
 private data class Project(
@@ -24,12 +24,11 @@ private fun createProject(info: Repo) =
     )
 
 private val projects =
-    getPinnedRepos()
-        ?.map { repo -> createProject(repo) }
-        ?.toSet()
-        ?.filter { "show-project" in it.topics }
-        ?.sortedByDescending { it.stars }
-        ?: error("Failed to get pinned repos")
+    API.getPinnedRepos()
+        .map { repo -> createProject(repo) }
+        .toSet()
+        .filter { "show-project" in it.topics }
+        .sortedByDescending { it.stars }
 
 fun HTML.projects() =
     base("Projects") {
