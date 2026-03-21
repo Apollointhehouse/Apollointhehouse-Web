@@ -30,24 +30,23 @@ private val projects =
         .filter { "show-project" in it.topics }
         .sortedByDescending { it.stars }
 
-fun HTML.projects() =
-    base("Projects") {
-        content {
-            section("projects-list") {
-                val chunked = projects.chunked(2)
+fun HTML.projects() = base("Projects") {
+    content {
+        section("projects-list") {
+            val chunked = projects.chunked(2)
 
-                for (pair in chunked) {
-                    div(classes = "grid") {
-                        for (project in pair) {
-                            article {
-                                header {
-                                    a(href = project.url) { h2 { +project.name } }
-                                }
-                                p { +project.description }
+            for (pair in chunked) {
+                div(classes = "grid") {
+                    for (project in pair) {
+                        article {
+                            header {
+                                a(href = project.url) { h2 { +project.name } }
                             }
+                            p { +project.description }
                         }
                     }
                 }
             }
         }
     }
+}

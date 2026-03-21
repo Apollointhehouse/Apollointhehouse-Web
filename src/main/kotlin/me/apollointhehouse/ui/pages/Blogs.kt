@@ -65,27 +65,25 @@ private fun parseBlogs(text: String): Pair<BlogData, String> {
     return meta to html
 }
 
-fun HTML.blogs() =
-    base("Blogs") {
-        content {
-            section("blogs-list") {
-                hxBoost = true
+fun HTML.blogs() = base("Blogs") {
+    content {
+        section("blogs-list") {
+            hxBoost = true
 
-                val blogs =
-                    generateBlogs()
-                        .sortedWith { blog, other -> other.compareTo(blog) }
+            val blogs =
+                generateBlogs()
+                    .sortedWith { blog, other -> other.compareTo(blog) }
 
-                for ((meta, _) in blogs) {
-                    val name = meta.title
+            for ((meta, _) in blogs) {
+                val name = meta.title
 
-                    article {
-                        a(href = name.replace(" ", "-")) { h2 { +name } }
-                        nav {
-                            ul {
-                                for (tag in meta.tags) {
-                                    li {
-                                        p { small { kbd { +tag } } }
-                                    }
+                article {
+                    a(href = name.replace(" ", "-")) { h2 { +name } }
+                    nav {
+                        ul {
+                            for (tag in meta.tags) {
+                                li {
+                                    p { small { kbd { +tag } } }
                                 }
                             }
                         }
@@ -94,3 +92,4 @@ fun HTML.blogs() =
             }
         }
     }
+}
