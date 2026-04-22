@@ -72,8 +72,10 @@ inline fun HTML.base(
     }
 }
 
-fun HTML.redirect(url: String) = base("redirecting...") {
+fun HTML.redirect(url: String) = base("Redirecting...") {
     script {
-        +"window.location.replace(${url})"
+        unsafe {
+            +"window.location.replace(\"${url}\")"
+        }
     }
 }
