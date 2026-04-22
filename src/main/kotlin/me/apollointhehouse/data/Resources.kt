@@ -3,6 +3,7 @@ package me.apollointhehouse.data
 import java.net.URI
 import kotlin.io.path.Path
 import kotlin.io.path.createFile
+import kotlin.io.path.exists
 import kotlin.io.path.writeBytes
 
 object Resources {
@@ -24,7 +25,7 @@ object Resources {
         ext: String
     ): String {
         val dir = Path("${Config.base}/$path/$name.$ext")
-        dir.createFile()
+        if (!dir.exists()) dir.createFile()
 
         dir.writeBytes(URI(url).toURL().readBytes())
 

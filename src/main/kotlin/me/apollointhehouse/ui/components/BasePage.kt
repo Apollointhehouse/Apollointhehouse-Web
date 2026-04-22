@@ -71,3 +71,9 @@ inline fun HTML.base(
         footer()
     }
 }
+
+fun HTML.redirect(url: String) = base("redirecting...") {
+    script {
+        +"window.location.replace(${url})"
+    }
+}
