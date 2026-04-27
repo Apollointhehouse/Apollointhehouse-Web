@@ -70,12 +70,13 @@ fun HTML.index() = base("Home") {
                     +"I have collaborated on several shared projects with individuals of varying experience levels."
                 }
                 p { +"In 2025, I participated in the Terrible Ideas Hackathon at the University of Auckland." }
+                p { +"In 2026, I participated in the Web3 Hackathon run by Web3 UoA." }
             }
 
             article(id = "education") {
                 h3 { +"Education" }
                 p { +"First-year student attending University of Auckland." }
-                p { +"Taking a BsC in Computer Science." }
+                p { +"Taking a BSc in Computer Science." }
 
                 p { +"In my last year of high school I was one of the few students to receive NCEA scholarship Digital Technologies." }
             }
