@@ -50,7 +50,7 @@ fun HTML.CV() {
 
     body {
         embed {
-            src = "/CV.pdf"
+            src = "/CV-2026-Apollo-Cameron-Boot.pdf"
             type = "application/pdf"
             attributes["frameborder"] = "0"
             attributes["scrolling"] = "auto"
