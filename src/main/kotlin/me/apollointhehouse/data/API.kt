@@ -11,8 +11,8 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import me.apollointhehouse.data.models.GraphQLQuery
-import models.v2.Repo
-import models.v2.UserData
+import me.apollointhehouse.data.models.github.Repo
+import me.apollointhehouse.data.models.github.UserData
 import kotlin.io.path.Path
 import kotlin.io.path.readText
 
@@ -41,7 +41,7 @@ object API {
             client.post("https://api.github.com/graphql") {
                 contentType(ContentType.Application.Json)
                 headers {
-                    append(HttpHeaders.Authorization, "bearer ${Config.pat}")
+                    append(HttpHeaders.Authorization, "bearer ${GitHubConfig.token}")
                     append(HttpHeaders.UserAgent, "Ktor Client")
                 }
 

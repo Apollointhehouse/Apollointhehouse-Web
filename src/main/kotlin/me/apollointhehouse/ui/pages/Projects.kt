@@ -3,10 +3,9 @@ package me.apollointhehouse.ui.pages
 import kotlinx.html.*
 import me.apollointhehouse.ui.components.base
 import me.apollointhehouse.ui.components.content
-import me.apollointhehouse.data.API
-import models.v2.Repo
+import me.apollointhehouse.data.models.github.Repo
 
-private data class Project(
+data class Project(
     val name: String,
     val description: String,
     val url: String,
@@ -14,7 +13,7 @@ private data class Project(
     val stars: Int,
 )
 
-private fun createProject(info: Repo) =
+fun createProject(info: Repo) =
     Project(
         name = info.name,
         description = info.description ?: "",
@@ -23,14 +22,14 @@ private fun createProject(info: Repo) =
         stars = info.stargazerCount,
     )
 
-private val projects =
-    API.getPinnedRepos()
-        .map { repo -> createProject(repo) }
+fun visibleProjects(repos: List<Repo>): List<Project> =
+    repos
+        .map(::createProject)
         .toSet()
         .filter { "show-project" in it.topics }
         .sortedByDescending { it.stars }
 
-fun HTML.projects() = base("Projects") {
+fun HTML.projects(projects: List<Project>) = base("Projects") {
     content {
         section("projects-list") {
             val chunked = projects.chunked(2)
