@@ -1,5 +1,6 @@
 package me.apollointhehouse.data
 
+import io.ktor.http.HttpStatusCode
 import kotlinx.html.HTML
 import kotlinx.html.html
 import kotlinx.html.stream.appendHTML
@@ -12,6 +13,17 @@ fun routing(vararg routes: Pair<String, HTML.() -> Unit>) {
         val folder = File("${Config.base}/$route").also { it.mkdirs() }
         val file = File("$folder/index.html").also { it.createNewFile() }
 
+        file.writer().use {
+            it.appendLine("<!DOCTYPE html>").appendHTML().html(block = page)
+        }
+    }
+}
+
+fun errorRouting(vararg routes: Pair<HttpStatusCode, HTML.() -> Unit>) {
+    for ((code, page) in routes) {
+        println("Creating code route: $code")
+
+        val file = File("${Config.base}/${code.value}.html").also { it.createNewFile() }
         file.writer().use {
             it.appendLine("<!DOCTYPE html>").appendHTML().html(block = page)
         }

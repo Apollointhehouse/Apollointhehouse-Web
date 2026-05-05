@@ -1,22 +1,26 @@
 package me.apollointhehouse
 
-import me.apollointhehouse.ui.pages.blogs
-import me.apollointhehouse.ui.pages.index
-import me.apollointhehouse.ui.pages.projects
+import io.ktor.http.HttpStatusCode
+import me.apollointhehouse.data.errorRouting
 import me.apollointhehouse.data.routing
 import me.apollointhehouse.data.setupResources
 import me.apollointhehouse.ui.pages.CV
-import me.apollointhehouse.ui.components.redirect
+import me.apollointhehouse.ui.pages.NotFound
+import me.apollointhehouse.ui.pages.blogs
+import me.apollointhehouse.ui.pages.projects
 
 fun main() {
     setupResources()
 
     routing(
-        "/" to { index() },
+        "/" to { NotFound() },
         "/projects" to { projects() },
         "/blogs" to { blogs() },
         "/CV" to { CV() },
-        "/test" to { redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ") },
+    )
+
+    errorRouting(
+        HttpStatusCode.NotFound to { NotFound() },
     )
 
     println("Done!")
