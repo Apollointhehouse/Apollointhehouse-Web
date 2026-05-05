@@ -1,6 +1,8 @@
 package me.apollointhehouse.data.blogs
 
 import me.apollointhehouse.data.models.Markdown
+import me.apollointhehouse.data.logger
+import org.slf4j.Logger
 import java.io.File
 
 data class BlogPost(
@@ -9,7 +11,10 @@ data class BlogPost(
     val html: String,
 ) {
     companion object {
+        private val logger: Logger = logger()
+
         operator fun invoke(text: String): BlogPost {
+            logger.info("Parsing blog post...")
             val lines = text.lines()
             val separatorIndex = lines.indexOfFirst { it == "---" }
 

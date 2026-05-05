@@ -7,6 +7,7 @@ group = "me.apollointhehouse"
 version = "1.0-SNAPSHOT"
 
 val ktor_version: String by project
+val log4jVersion = "2.25.4"
 
 repositories {
     mavenCentral()
@@ -24,11 +25,13 @@ dependencies {
     implementation("org.jetbrains:markdown:0.7.3")
 
     implementation("io.ktor:ktor-client-logging:$ktor_version")
-    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0")
-    implementation("org.apache.logging.log4j:log4j-core:2.25.4")
+    runtimeOnly(platform("org.apache.logging.log4j:log4j-bom:$log4jVersion"))
+    runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl")
+    runtimeOnly("org.apache.logging.log4j:log4j-core")
 
     implementation("org.apache.xmlgraphics:batik-all:1.19")
 
+    implementation(kotlin("reflect"))
     testImplementation(kotlin("test"))
 }
 

@@ -17,6 +17,8 @@ import kotlin.io.path.Path
 import kotlin.io.path.readText
 
 object API {
+    private val logger = logger()
+
     private val client: HttpClient =
         HttpClient(CIO) {
             install(ContentNegotiation) {
@@ -30,13 +32,14 @@ object API {
             }
 
             install(Logging) {
-                level = LogLevel.ALL
+                level = LogLevel.INFO
             }
         }
 
     private val githubQuery = Path("./src/main/resources/api/GithubQuery").readText()
 
     fun getPinnedRepos(): List<Repo> = runBlocking {
+        logger.info("Getting repositories...")
         val res =
             client.post("https://api.github.com/graphql") {
                 contentType(ContentType.Application.Json)
