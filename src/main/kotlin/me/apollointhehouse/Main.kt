@@ -7,13 +7,14 @@ import me.apollointhehouse.data.setupResources
 import me.apollointhehouse.ui.pages.CV
 import me.apollointhehouse.ui.pages.NotFound
 import me.apollointhehouse.ui.pages.blogs
+import me.apollointhehouse.ui.pages.index
 import me.apollointhehouse.ui.pages.projects
 
 fun main() {
     setupResources()
 
     routing(
-        "/" to { NotFound() },
+        "/" to { index() },
         "/projects" to { projects() },
         "/blogs" to { blogs() },
         "/CV" to { CV() },
