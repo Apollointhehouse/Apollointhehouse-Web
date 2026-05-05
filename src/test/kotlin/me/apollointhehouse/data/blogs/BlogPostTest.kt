@@ -7,9 +7,9 @@ import kotlin.test.assertFailsWith
 
 class BlogPostTest {
     @Test
-    fun `parseBlogPost maps metadata body and slug`() {
+    fun `BlogPost function maps metadata body and slug`() {
         val post =
-            parseBlogPost(
+            BlogPost(
                 """
                 title=My First Blog!
                 date=2026-05-01
@@ -28,9 +28,9 @@ class BlogPostTest {
     }
 
     @Test
-    fun `parseBlogPost rejects missing metadata separator`() {
+    fun `BlogPost function rejects missing metadata separator`() {
         assertFailsWith<IllegalArgumentException> {
-            parseBlogPost("title=Missing Separator")
+            BlogPost("title=Missing Separator")
         }
     }
 
