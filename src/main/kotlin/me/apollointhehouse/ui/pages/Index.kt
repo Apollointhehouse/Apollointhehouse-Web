@@ -27,8 +27,9 @@ fun HTML.index() = base("Home") {
             p {
                 +
                     """
-                    I have experience in game modding using java/kotlin and in working on collaborative projects with others, 
-                    I am very interested in the application to software to real world issues
+                    I have experience building backend, fullstack, and general software applications using Kotlin,
+                    Java, and TypeScript. I've worked on desktop apps, websites, and game modifications, with experience in event
+                    systems, networking, and computer graphics through personal projects and hackathons.
                     """.trimIndent()
                     .split("\n")
                     .joinToString("\n")
