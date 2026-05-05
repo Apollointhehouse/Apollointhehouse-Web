@@ -1,43 +1,33 @@
 package me.apollointhehouse
 
-import io.ktor.http.HttpStatusCode
-import kotlinx.html.HTML
+import io.ktor.http.*
 import me.apollointhehouse.data.API
 import me.apollointhehouse.data.blogs.loadBlogPosts
-import me.apollointhehouse.data.errorRouting
-import me.apollointhehouse.data.routing
-import me.apollointhehouse.data.setupResources
+import me.apollointhehouse.data.routing.ErrorRoute.Companion.bind
+import me.apollointhehouse.data.routing.PageRoute.Companion.bind
+import me.apollointhehouse.data.routing.Route
+import me.apollointhehouse.data.routing.routing
+import me.apollointhehouse.data.routing.setupResources
 import me.apollointhehouse.ui.components.blog
-import me.apollointhehouse.ui.pages.CV
-import me.apollointhehouse.ui.pages.NotFound
-import me.apollointhehouse.ui.pages.blogs
-import me.apollointhehouse.ui.pages.index
-import me.apollointhehouse.ui.pages.projects
-import me.apollointhehouse.ui.pages.visibleProjects
+import me.apollointhehouse.ui.pages.*
 
 fun main() {
     setupResources()
 
     val projects = visibleProjects(API.getPinnedRepos())
     val blogPosts = loadBlogPosts()
-    val blogRoutes: Array<Pair<String, HTML.() -> Unit>> =
+    val blogRoutes: Array<Route> =
         blogPosts
-            .map { post ->
-                val page: HTML.() -> Unit = { blog(post.meta.title, post.html) }
-                "/blogs/${post.slug}" to page
-            }
+            .map { (meta, slug, html) -> "/blogs/${slug}" bind { blog(meta.title, html) } }
             .toTypedArray()
 
     routing(
-        "/" to { index() },
-        "/projects" to { projects(projects) },
-        "/blogs" to { blogs(blogPosts) },
-        "/CV" to { CV() },
+        "/" bind { index() },
+        "/projects" bind { projects(projects) },
+        "/blogs" bind { blogs(blogPosts) },
+        "/CV" bind { CV() },
         *blogRoutes,
-    )
-
-    errorRouting(
-        HttpStatusCode.NotFound to { NotFound() },
+        HttpStatusCode.NotFound bind { NotFound() },
     )
 
     println("Done!")

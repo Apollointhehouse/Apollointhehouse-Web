@@ -18,13 +18,13 @@ fun createProject(info: Repo) =
         name = info.name,
         description = info.description ?: "",
         url = info.url,
-        topics = info.repositoryTopics.nodes.map { (topic, _) -> topic.name },
+        topics = info.repositoryTopics.nodes.map { (topic) -> topic.name },
         stars = info.stargazerCount,
     )
 
 fun visibleProjects(repos: List<Repo>): List<Project> =
     repos
-        .map(::createProject)
+        .map { createProject(it) }
         .toSet()
         .filter { "show-project" in it.topics }
         .sortedByDescending { it.stars }

@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "2.1.20"
-    kotlin("plugin.serialization") version "2.1.0"
+    kotlin("jvm") version "2.3.21"
+    kotlin("plugin.serialization") version "2.3.21"
 }
 
 group = "me.apollointhehouse"
@@ -25,7 +25,7 @@ dependencies {
 
     implementation("io.ktor:ktor-client-logging:$ktor_version")
     implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0")
-    implementation("org.apache.logging.log4j:log4j-core:2.19.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.25.4")
 
     implementation("org.apache.xmlgraphics:batik-all:1.19")
 
@@ -48,4 +48,8 @@ tasks.test {
 
 kotlin {
     jvmToolchain(21)
+
+    compilerOptions {
+        freeCompilerArgs.add("-Xname-based-destructuring=complete")
+    }
 }
