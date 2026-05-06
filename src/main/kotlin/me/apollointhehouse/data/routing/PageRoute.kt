@@ -16,6 +16,11 @@ class PageRoute private constructor(
     }
 
     companion object : RouteFactory<String> {
-        override infix fun String.bind(page: Page): Route = PageRoute(this, page)
+        context(builder: Router.Builder)
+        override infix fun String.bind(page: Page): Route {
+            val route = PageRoute(this, page)
+            builder.addRoute(route)
+            return route
+        }
     }
 }

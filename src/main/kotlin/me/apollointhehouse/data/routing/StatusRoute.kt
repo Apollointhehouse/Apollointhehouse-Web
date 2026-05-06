@@ -6,7 +6,7 @@ import java.nio.file.Path
 import kotlin.io.path.Path
 import kotlin.io.path.createFile
 
-class ErrorRoute private constructor(
+class StatusRoute private constructor(
     val code: HttpStatusCode,
     override val url: String,
     override val page: Page
@@ -16,6 +16,11 @@ class ErrorRoute private constructor(
     }
 
     companion object : RouteFactory<HttpStatusCode> {
-        override infix fun HttpStatusCode.bind(page: Page): ErrorRoute = ErrorRoute(this, this.value.toString(), page)
+        context(builder: Router.Builder)
+        override infix fun HttpStatusCode.bind(page: Page): StatusRoute {
+            val route = StatusRoute(this, this.value.toString(), page)
+            builder.addRoute(route)
+            return route
+        }
     }
 }

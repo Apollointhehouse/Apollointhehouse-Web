@@ -54,5 +54,6 @@ kotlin {
 
     compilerOptions {
         freeCompilerArgs.add("-Xname-based-destructuring=complete")
+        freeCompilerArgs.add("-Xcontext-parameters")
     }
 }
