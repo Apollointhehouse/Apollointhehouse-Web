@@ -50,8 +50,6 @@ inline fun HTML.base(
 
         meta(name = "description", content = "Personal website for Apollointhehouse")
 
-        meta(name = "htmx-config", content = "{\"globalViewTransitions\":true}")
-
         script { src = Resources.htmx }
         script { src = Resources.htmxPreload }
 
