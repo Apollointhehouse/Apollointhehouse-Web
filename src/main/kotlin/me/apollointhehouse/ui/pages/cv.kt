@@ -3,7 +3,7 @@ package me.apollointhehouse.ui.pages
 import kotlinx.html.*
 import me.apollointhehouse.data.Resources
 
-fun HTML.CV() {
+fun HTML.cv() {
     lang = "en"
 
     head {

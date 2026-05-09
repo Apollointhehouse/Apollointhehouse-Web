@@ -22,6 +22,7 @@ fun FlowContent.navbar(vararg pages: Page) =
             for (page in pages) {
                 li {
                     a {
+                        attributes["preload"] = ""
                         href = page.route
                         +page.name
                     }

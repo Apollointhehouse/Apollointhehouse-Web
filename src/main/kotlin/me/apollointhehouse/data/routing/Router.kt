@@ -31,3 +31,7 @@ class Router(private val routes: List<Route>) {
         }
     }
 }
+
+inline fun routing(builder: context(Router.Builder) () -> Unit): Router {
+    return Router.Builder().apply(builder).build()
+}

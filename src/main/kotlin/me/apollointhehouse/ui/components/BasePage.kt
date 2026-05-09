@@ -41,14 +41,16 @@ inline fun HTML.base(
 
         meta {
             attributes["property"] = "og:description"
-            content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand"
+            content = "Personal website for Apollointhehouse"
         }
         meta {
             attributes["property"] = "twitter:description"
-            content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand"
+            content = "Personal website for Apollointhehouse"
         }
 
-        meta(name = "description", content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand")
+        meta(name = "description", content = "Personal website for Apollointhehouse")
+
+        meta(name = "htmx-config", content = "{\"globalViewTransitions\":true}")
 
         // verifcation
         meta {
@@ -62,7 +64,9 @@ inline fun HTML.base(
     }
 
     body {
+        attributes["hx-ext"] = "preload"
         script { src = Resources.htmx }
+        script { src = Resources.htmxPreload }
         div("header") {
             navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", "/blogs"))
         }

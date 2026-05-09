@@ -12,6 +12,13 @@ object Resources {
         url = "https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js",
         ext = "js"
     )
+
+    val htmxPreload = download(
+        name = "htmx-ext-preload",
+        url = "https://cdn.jsdelivr.net/npm/htmx-ext-preload@2.1.2",
+        ext = "js"
+    )
+
     val picoCSS = download(
         name = "pico.min",
         url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css",

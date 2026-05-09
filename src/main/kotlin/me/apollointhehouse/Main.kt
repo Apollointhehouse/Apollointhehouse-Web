@@ -18,15 +18,17 @@ private val app = routing {
     "/" bind {
         index()
     }
+
     "/projects" bind {
         projects(visibleProjects(API.getPinnedRepos()))
     }
+
     "/CV" bind {
-        CV()
+        cv()
     }
 
     HttpStatusCode.NotFound bind {
-        NotFound()
+        notFound()
     }
 
     blogRoutes()

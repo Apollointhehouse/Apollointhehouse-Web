@@ -13,10 +13,6 @@ private val logger = logger {}
 
 typealias Page =  HTML.() -> Unit
 
-fun routing(builder: context(Router.Builder) () -> Unit): Router {
-    return Router.Builder().apply(builder).build()
-}
-
 fun setupResources() {
     logger.info("Setting up resources...")
     Path("./src/main/resources/static").copyToRecursively(target = Config.base, followLinks = false, overwrite = true)
