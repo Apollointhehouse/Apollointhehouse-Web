@@ -52,6 +52,9 @@ inline fun HTML.base(
 
         meta(name = "htmx-config", content = "{\"globalViewTransitions\":true}")
 
+        script { src = Resources.htmx }
+        script { src = Resources.htmxPreload }
+
         // verifcation
         meta {
             name = "google-site-verification"
@@ -65,8 +68,6 @@ inline fun HTML.base(
 
     body {
         attributes["hx-ext"] = "preload"
-        script { src = Resources.htmx }
-        script { src = Resources.htmxPreload }
         div("header") {
             navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", "/blogs"))
         }

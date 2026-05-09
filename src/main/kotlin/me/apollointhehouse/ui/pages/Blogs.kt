@@ -15,7 +15,10 @@ fun HTML.blogs(posts: List<BlogPost>) = base("Blogs") {
                 val name = post.meta.title
 
                 article {
-                    a(href = post.slug) { h2 { +name } }
+                    a(href = post.slug) {
+                        attributes["preload"] = ""
+                        h2 { +name }
+                    }
                     nav {
                         ul {
                             for (tag in post.meta.tags) {
