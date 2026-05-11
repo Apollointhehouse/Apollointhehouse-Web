@@ -1,12 +1,10 @@
 package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.data.Config.README_STATS_API
-import me.apollointhehouse.data.Resources.download
+import kotlinx.html.article
 import me.apollointhehouse.ui.components.base
-import me.apollointhehouse.ui.components.utils.Theme
 import me.apollointhehouse.ui.components.utils.article
-import me.apollointhehouse.ui.components.themedImg
+import me.apollointhehouse.ui.components.utils.section
 
 fun HTML.index() = base("Home") {
     div("hero") {
@@ -26,12 +24,10 @@ fun HTML.index() = base("Home") {
         p {
             +
             """
-                    I have experience building backend, fullstack, and general software applications using Kotlin,
-                    Java, and TypeScript. I've worked on desktop apps, websites, and game modifications, with experience in event
-                    systems, networking, and computer graphics through personal projects and hackathons.
-                    """.trimIndent()
-                .split("\n")
-                .joinToString("\n")
+            I have experience building backend, fullstack, and general software applications using Kotlin,
+            Java, and TypeScript. I've worked on desktop apps, websites, and game modifications, with experience in event
+            systems, networking, and computer graphics through personal projects and hackathons.
+            """
         }
     }
 
@@ -39,7 +35,6 @@ fun HTML.index() = base("Home") {
         id = "home-grid"
         article(id = "skills") {
             h3 { +"Skills" }
-
             h4 { +"Backend and Game Modding:" }
             ul {
                 li { +"Languages: Java, Python, Kotlin, SQL" }
@@ -58,12 +53,10 @@ fun HTML.index() = base("Home") {
             p {
                 +
                 """
-                        I have worked on several java/kotlin based mods for a forked version of Minecraft, 
-                        which has given me an understanding of how to work with legacy code bases
-                        and how to solve/workaround issues in software development.
-                        """.trimIndent()
-                    .split("\n")
-                    .joinToString(" ")
+                I have worked on several java/kotlin based mods for a forked version of Minecraft, 
+                which has given me an understanding of how to work with legacy code bases
+                and how to solve/workaround issues in software development.
+                """
             }
 
             p {
@@ -82,48 +75,48 @@ fun HTML.index() = base("Home") {
         }
     }
 
-    article(id = "metrics") {
-        h3 { +"Metrics" }
+    section(id = "projects") {
+        h3 { +"Projects" }
 
-        themedImg(
-            themes = StatsTheme.entries,
-            name = "Apollo's Github Stats",
-        ) { it.statsGraph() }
-
-        themedImg(
-            themes = StatsTheme.entries,
-            name = "Apollo's Most Used Languages",
-        ) { it.languageGraph() }
+        for (project in topProjects) {
+            article {
+                header {
+                    a(href = project.url) { h2 { +project.name } }
+                }
+                p { +project.description }
+            }
+        }
     }
 }
 
+private data class TopProject(
+    val name: String,
+    val description: String,
+    val url: String,
+)
 
-
-
-private enum class StatsTheme(
-    bgColor: String,
-    textColor: String,
-    iconColor: String,
-    titleColor: String,
-    override val mode: String,
-) : Theme {
-    Dark("24273a", "cad3f5", "c6a0f6", "8bd5ca", "dark"),
-    Light("eff1f5", "4c4f69", "8839ef", "179299", "light");
-
-    private val languageQuery = "${README_STATS_API}/top-langs?username=apollointhehouse&show_icons=true&bg_color=${bgColor}&text_color=${textColor}&icon_color=${iconColor}&title_color=${titleColor}&hide_border=false&layout=compact&locale=en"
-    private val statsQuery = "${README_STATS_API}?username=apollointhehouse&show_icons=true&bg_color=${bgColor}&text_color=${textColor}&icon_color=${iconColor}&title_color=${titleColor}&hide_border=false&locale=en"
-
-    fun languageGraph() = download(
-        name = "langs-$mode",
-        url = languageQuery,
-        path = "/assets/images",
-        ext = "svg"
+private val topProjects = listOf(
+    TopProject(
+        name = "DataLens",
+        description = "A desktop file search tool I built, this software uses indexed file system scanning, enabling fast, low-latency queries across large directories",
+        url = "https://github.com/apollointhehouse/DataLens",
+    ),
+    TopProject(
+        name = "Apollointhehouse-Web",
+        description = """
+            My personal website, built using the kotlin programming language, the code generates a
+            static website which is then deployed to Cloudflare Pages. The code is automatically run using a GitHub Workflow
+            for CI/CD. Every time the website is regenerated it automatically fetches all of my GitHub projects using the GitHub
+            GraphQL API and displays them on the website
+        """,
+        url = "https://github.com/Apollointhehouse/Apollointhehouse-Web",
+    ),
+    TopProject(
+        name = "Bonus3",
+        description = """
+            A Web3 employee bonus distribution platform my team built at the 2026 Web3 Hackathon run by the
+            Web3 UoA club.
+        """,
+        url = "https://github.com/jameblai/web3-hackathon",
     )
-
-    fun statsGraph() = download(
-        name = "stats-$mode",
-        url = statsQuery,
-        path = "/assets/images",
-        ext = "svg",
-    )
-}
+)

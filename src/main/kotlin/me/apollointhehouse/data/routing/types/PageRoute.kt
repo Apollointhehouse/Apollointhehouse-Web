@@ -4,14 +4,13 @@ import kotlinx.html.html
 import kotlinx.html.stream.createHTML
 import me.apollointhehouse.data.Config
 import me.apollointhehouse.data.logger
-import me.apollointhehouse.data.routing.Page
 import me.apollointhehouse.data.routing.Router
 import java.nio.file.Path
 import kotlin.io.path.*
 
 class PageRoute private constructor(
-    override val url: String,
-    override val page: Page
+    private val url: String,
+    private val page: Page
 ) : Route {
     private val logger = logger()
 
@@ -44,11 +43,11 @@ class PageRoute private constructor(
             }
     }
 
-    companion object : RouteFactory<String> {
+    companion object {
         context(builder: Router.Builder)
-        override infix fun String.bind(page: Page): Route {
+        infix fun String.bind(page: Page): Route {
             val route = PageRoute(this, page)
-            builder.addRoute(route)
+            builder.route(route)
             return route
         }
     }

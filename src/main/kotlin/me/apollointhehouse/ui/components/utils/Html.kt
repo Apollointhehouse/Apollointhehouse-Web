@@ -11,3 +11,11 @@ inline fun SectioningOrFlowContent.article(
     ARTICLE(attributesMapOf("class", classes, "id", id), consumer).visit(block)
 }
 
+@HtmlTagMarker
+inline fun SectioningOrFlowContent.section(
+    classes: String? = null,
+    id: String? = null,
+    crossinline block: SECTION.() -> Unit = {},
+) {
+    SECTION(attributesMapOf("class", classes, "id", id), consumer).visit(block)
+}

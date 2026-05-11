@@ -3,16 +3,12 @@ package me.apollointhehouse
 import io.ktor.http.*
 import me.apollointhehouse.data.API
 import me.apollointhehouse.data.blogs.loadBlogPosts
-import me.apollointhehouse.data.logger
-import me.apollointhehouse.data.routing.types.StatusRoute.Companion.bind
 import me.apollointhehouse.data.routing.types.PageRoute.Companion.bind
-import me.apollointhehouse.data.routing.Router
 import me.apollointhehouse.data.routing.routing
-import me.apollointhehouse.data.routing.setupResources
+import me.apollointhehouse.data.routing.types.StaticRoute.Companion.static
+import me.apollointhehouse.data.routing.types.StatusRoute.Companion.status
 import me.apollointhehouse.ui.components.blog
 import me.apollointhehouse.ui.pages.*
-
-private val logger = logger {}
 
 private val app = routing {
     "/" bind {
@@ -27,24 +23,6 @@ private val app = routing {
         cv()
     }
 
-    HttpStatusCode.NotFound bind {
-        notFound()
-    }
-
-    blogRoutes()
-}
-
-fun main() {
-    logger.info("Generating Static Pages...")
-
-    setupResources()
-    app.create()
-
-    logger.info("Done!")
-}
-
-context(_: Router.Builder)
-private fun blogRoutes() {
     val blogPosts = loadBlogPosts()
 
     "/blogs" bind {
@@ -56,4 +34,14 @@ private fun blogRoutes() {
             blog(meta.title, html)
         }
     }
+
+    status(HttpStatusCode.NotFound) {
+        notFound()
+    }
+
+    static()
+}
+
+fun main() {
+    app.create()
 }

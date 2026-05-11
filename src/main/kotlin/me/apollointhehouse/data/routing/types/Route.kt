@@ -1,10 +1,9 @@
 package me.apollointhehouse.data.routing.types
 
-import me.apollointhehouse.data.routing.Page
+import kotlinx.html.HTML
 
 sealed interface Route {
-    val url: String
-
-    val page: Page
     fun create()
 }
+
+typealias Page = HTML.() -> Unit
