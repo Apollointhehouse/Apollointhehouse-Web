@@ -5,7 +5,7 @@ import me.apollointhehouse.data.Resources
 
 inline fun HTML.base(
     title: String,
-    crossinline block: BODY.() -> Unit,
+    crossinline block: FlowContent.() -> Unit,
 ) {
     lang = "en"
 
@@ -70,7 +70,10 @@ inline fun HTML.base(
             navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", "/blogs"))
         }
 
-        block()
+        content {
+            block()
+        }
+
         footer()
     }
 }

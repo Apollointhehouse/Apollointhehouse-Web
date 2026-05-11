@@ -31,3 +31,15 @@ var FlowContent.hxTrigger: String
     set(value) {
         attributes["hx-trigger"] = value
     }
+
+var FlowContent.hxSelect: String
+    get() = attributes["hx-select"] ?: ""
+    set(value) {
+        attributes["hx-select"] = value
+    }
+
+var FlowContent.hxPushUrl: String
+    get() = attributes["hx-push-url"] ?: ""
+    set(value) {
+        attributes["hx-push-url"] = value
+    }

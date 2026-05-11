@@ -4,8 +4,8 @@ import io.ktor.http.*
 import me.apollointhehouse.data.API
 import me.apollointhehouse.data.blogs.loadBlogPosts
 import me.apollointhehouse.data.logger
-import me.apollointhehouse.data.routing.StatusRoute.Companion.bind
-import me.apollointhehouse.data.routing.PageRoute.Companion.bind
+import me.apollointhehouse.data.routing.types.StatusRoute.Companion.bind
+import me.apollointhehouse.data.routing.types.PageRoute.Companion.bind
 import me.apollointhehouse.data.routing.Router
 import me.apollointhehouse.data.routing.routing
 import me.apollointhehouse.data.routing.setupResources

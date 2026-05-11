@@ -1,9 +1,8 @@
 package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.ui.components.base
-import me.apollointhehouse.ui.components.content
 import me.apollointhehouse.data.models.github.Repo
+import me.apollointhehouse.ui.components.base
 
 data class Project(
     val name: String,
@@ -30,19 +29,17 @@ fun visibleProjects(repos: List<Repo>): List<Project> =
         .sortedByDescending { it.stars }
 
 fun HTML.projects(projects: List<Project>) = base("Projects") {
-    content {
-        section("projects-list") {
-            val chunked = projects.chunked(2)
+    section("projects-list") {
+        val chunked = projects.chunked(2)
 
-            for (pair in chunked) {
-                div(classes = "grid") {
-                    for (project in pair) {
-                        article {
-                            header {
-                                a(href = project.url) { h2 { +project.name } }
-                            }
-                            p { +project.description }
+        for (pair in chunked) {
+            div(classes = "grid") {
+                for (project in pair) {
+                    article {
+                        header {
+                            a(href = project.url) { h2 { +project.name } }
                         }
+                        p { +project.description }
                     }
                 }
             }

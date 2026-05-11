@@ -10,6 +10,8 @@ data class BlogPost(
     val slug: String,
     val html: String,
 ) {
+    val partial = "/partials/blogs/$slug"
+
     companion object {
         private val logger: Logger = logger()
 
