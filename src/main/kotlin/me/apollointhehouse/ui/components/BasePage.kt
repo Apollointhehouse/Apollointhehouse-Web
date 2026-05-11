@@ -15,7 +15,7 @@ inline fun HTML.base(
         meta(name = "color-scheme", content = "light dark")
 
         link(rel = "stylesheet", href = Resources.picoCSS)
-        link(rel = "stylesheet", href = "/style.css")
+        link(rel = "stylesheet", href = "/style.min.css")
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
         meta(
