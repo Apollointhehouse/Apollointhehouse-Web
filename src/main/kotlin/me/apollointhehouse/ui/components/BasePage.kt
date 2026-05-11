@@ -50,8 +50,14 @@ inline fun HTML.base(
 
         meta(name = "description", content = "Personal website for Apollointhehouse")
 
-        script { src = Resources.htmx }
-        script { src = Resources.htmxPreload }
+        script {
+            src = Resources.htmx
+            attributes["defer"] = ""
+        }
+        script {
+            src = Resources.htmxPreload
+            attributes["defer"] = ""
+        }
 
         // verifcation
         meta {
