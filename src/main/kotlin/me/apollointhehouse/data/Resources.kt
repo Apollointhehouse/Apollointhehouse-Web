@@ -28,7 +28,7 @@ object Resources {
 
     val styleCSS = Resource(
         url = "/style.min.css",
-        path = Path.of("${Config.base}/static/style.min.css")
+        path = Path("./src/main/resources/styles/style.min.css")
     )
 
     private fun download(
