@@ -5,7 +5,7 @@ import kotlinx.html.ImgLoading
 import kotlinx.html.img
 import kotlinx.html.picture
 import kotlinx.html.source
-import me.apollointhehouse.ui.components.utils.Theme
+import me.apollointhehouse.ui.html.Theme
 
 inline fun <T : Theme> FlowContent.themedImg(
     themes: Iterable<T>,

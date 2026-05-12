@@ -1,4 +1,4 @@
-package me.apollointhehouse.ui.components.utils
+package me.apollointhehouse.ui.html
 
 import kotlinx.html.*
 

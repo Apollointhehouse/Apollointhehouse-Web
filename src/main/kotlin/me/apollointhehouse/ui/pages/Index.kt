@@ -3,8 +3,8 @@ package me.apollointhehouse.ui.pages
 import kotlinx.html.*
 import kotlinx.html.article
 import me.apollointhehouse.ui.components.base
-import me.apollointhehouse.ui.components.utils.article
-import me.apollointhehouse.ui.components.utils.section
+import me.apollointhehouse.ui.html.article
+import me.apollointhehouse.ui.html.section
 
 fun HTML.index() = base("Home") {
     div("hero") {

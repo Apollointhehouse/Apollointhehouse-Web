@@ -1,10 +1,10 @@
 package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.ui.components.utils.hxGet
-import me.apollointhehouse.ui.components.utils.hxPushUrl
-import me.apollointhehouse.ui.components.utils.hxSwap
-import me.apollointhehouse.ui.components.utils.hxTarget
+import me.apollointhehouse.ui.html.hxGet
+import me.apollointhehouse.ui.html.hxPushUrl
+import me.apollointhehouse.ui.html.hxSwap
+import me.apollointhehouse.ui.html.hxTarget
 
 data class Page(
     val name: String,

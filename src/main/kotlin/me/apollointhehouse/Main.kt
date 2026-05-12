@@ -15,8 +15,10 @@ private val app = routing {
         index()
     }
 
+    val projects = visibleProjects(API.getPinnedRepos())
+
     "/projects" bind {
-        projects(visibleProjects(API.getPinnedRepos()))
+        projects(projects)
     }
 
     "/CV" bind {
@@ -30,7 +32,7 @@ private val app = routing {
     }
 
     for ((meta, slug, html) in blogPosts) {
-        "/blogs/${slug}" bind {
+        slug bind {
             blog(meta.title, html)
         }
     }

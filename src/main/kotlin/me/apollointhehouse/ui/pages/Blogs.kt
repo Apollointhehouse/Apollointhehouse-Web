@@ -3,10 +3,10 @@ package me.apollointhehouse.ui.pages
 import kotlinx.html.*
 import me.apollointhehouse.data.blogs.BlogPost
 import me.apollointhehouse.ui.components.base
-import me.apollointhehouse.ui.components.utils.hxGet
-import me.apollointhehouse.ui.components.utils.hxPushUrl
-import me.apollointhehouse.ui.components.utils.hxSwap
-import me.apollointhehouse.ui.components.utils.hxTarget
+import me.apollointhehouse.ui.html.hxGet
+import me.apollointhehouse.ui.html.hxPushUrl
+import me.apollointhehouse.ui.html.hxSwap
+import me.apollointhehouse.ui.html.hxTarget
 
 fun HTML.blogs(posts: List<BlogPost>) = base("Blogs") {
     section("blogs-list") {

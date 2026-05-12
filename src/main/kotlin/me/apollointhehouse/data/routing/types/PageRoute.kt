@@ -1,10 +1,13 @@
 package me.apollointhehouse.data.routing.types
 
+import kotlinx.html.dom.createHTMLDocument
+import kotlinx.html.dom.serialize
 import kotlinx.html.html
 import kotlinx.html.stream.createHTML
 import me.apollointhehouse.data.Config
 import me.apollointhehouse.data.logger
 import me.apollointhehouse.data.routing.Router
+import me.apollointhehouse.ui.html.PartialFilter.Companion.filterPartials
 import java.nio.file.Path
 import kotlin.io.path.*
 
@@ -16,8 +19,11 @@ class PageRoute private constructor(
 
     override fun create() {
         logger.info("Creating route: $url")
-        val html = createHTML()
-            .html(block = page)
+
+
+        val html = createHTMLDocument()
+            .html { page() }
+            .serialize()
 
         val folder = Path.of("${Config.base}/$url")
         if (!folder.exists()) folder.createDirectories()
@@ -25,20 +31,20 @@ class PageRoute private constructor(
             .also { it.createFile() }
             .writer()
             .use {
-                it.appendLine("<!DOCTYPE html>").append(html)
+                it.append(html)
             }
 
         logger.info("Creating Partial: /partial$url")
+        val partialHtml = createHTML()
+            .filterPartials()
+            .html { page() }
+
         val partial = Path.of("${Config.partials}/$url")
         partial.createDirectories()
         (partial / "index.html")
             .also { it.createFile() }
             .writer()
             .use {
-                val partialHtml = html
-                    .substringAfter("<main class=\"container\" style=\"min-height: 100vh;\">")
-                    .substringBefore("</main>")
-
                 it.append(partialHtml)
             }
     }

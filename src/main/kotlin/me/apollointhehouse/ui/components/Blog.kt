@@ -6,9 +6,7 @@ fun HTML.blog(
     name: String,
     html: String,
 ) = base(name) {
-    content {
-        unsafe {
-            +html.substringAfter("<body>").substringBefore("</body>")
-        }
+    unsafe {
+        raw(html)
     }
 }

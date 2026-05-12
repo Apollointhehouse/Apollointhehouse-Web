@@ -5,7 +5,7 @@ import me.apollointhehouse.data.Resources
 
 inline fun HTML.base(
     title: String,
-    crossinline block: FlowContent.() -> Unit,
+    crossinline block: MAIN.() -> Unit,
 ) {
     lang = "en"
 
@@ -77,6 +77,9 @@ inline fun HTML.base(
         }
 
         content {
+            unsafe {
+                raw("<title>$title</title>")
+            }
             block()
         }
 

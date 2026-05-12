@@ -1,7 +1,7 @@
 package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.ui.components.utils.Theme
+import me.apollointhehouse.ui.html.Theme
 
 private val socials =
     listOf(

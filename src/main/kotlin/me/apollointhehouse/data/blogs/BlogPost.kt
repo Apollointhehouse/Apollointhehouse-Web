@@ -10,7 +10,7 @@ data class BlogPost(
     val slug: String,
     val html: String,
 ) {
-    val partial = "/partials/blogs/$slug"
+    val partial = "/partials/$slug"
 
     companion object {
         private val logger: Logger = logger()
@@ -41,7 +41,7 @@ data class BlogPost(
 
             return BlogPost(
                 meta = meta,
-                slug = slugify(meta.title),
+                slug = "/blogs/" + slugify(meta.title),
                 html = Markdown(markdown).toHtml(),
             )
         }

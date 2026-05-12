@@ -11,9 +11,8 @@ data class Markdown(
     private val mdParser = MarkdownParser(flavour)
 
     fun toHtml(): String {
-        val parsedTree = mdParser.buildMarkdownTreeFromString(text)
-        val html = HtmlGenerator(text, parsedTree, flavour).generateHtml()
-
-        return html
+        val parsedTree = mdParser.buildMarkdownTreeFromString(text).children[0]
+        return HtmlGenerator(text, parsedTree, flavour)
+            .generateHtml()
     }
 }
