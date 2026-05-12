@@ -2,6 +2,7 @@ package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
 import me.apollointhehouse.data.Resources
+import kotlin.io.path.readText
 
 inline fun HTML.base(
     title: String = "",
@@ -14,7 +15,17 @@ inline fun HTML.base(
         meta(name = "viewport", content = "width=device-width, initial-scale=1")
         meta(name = "color-scheme", content = "light dark")
 
-        link(rel = "stylesheet", href = Resources.picoCSS)
+        style {
+            unsafe {
+                raw(Resources.picoCSS.path.readText())
+            }
+        }
+//        link(rel = "stylesheet", href = Resources.picoCSS)
+//        style {
+//            unsafe {
+//                raw(Resources.picoCSS.path.readText())
+//            }
+//        }
         link(rel = "stylesheet", href = "/style.min.css")
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
@@ -51,11 +62,11 @@ inline fun HTML.base(
         meta(name = "description", content = "Personal website for Apollointhehouse")
 
         script {
-            src = Resources.htmx
+            src = Resources.htmx.url
             attributes["defer"] = ""
         }
         script {
-            src = Resources.htmxPreload
+            src = Resources.htmxPreload.url
             attributes["defer"] = ""
         }
 
