@@ -22,7 +22,7 @@ class BlogPostTest {
         assertEquals("My First Blog!", post.meta.title)
         assertEquals("2026-05-01", post.meta.date.toString())
         assertEquals(listOf("kotlin", "static sites"), post.meta.tags)
-        assertEquals("my-first-blog", post.slug)
+        assertEquals("/blogs/my-first-blog", post.slug)
         assertContains(post.html, "<h1")
         assertContains(post.html, "Hello")
     }
