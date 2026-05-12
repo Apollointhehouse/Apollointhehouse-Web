@@ -26,6 +26,11 @@ object Resources {
         ext = "css"
     )
 
+    val styleCSS = Resource(
+        url = "/style.min.css",
+        path = Path.of("${Config.base}/static/style.min.css")
+    )
+
     private fun download(
         name: String,
         url: String,

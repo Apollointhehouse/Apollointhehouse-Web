@@ -20,13 +20,13 @@ inline fun HTML.base(
                 raw(Resources.picoCSS.path.readText())
             }
         }
-//        link(rel = "stylesheet", href = Resources.picoCSS)
-//        style {
-//            unsafe {
-//                raw(Resources.picoCSS.path.readText())
-//            }
-//        }
-        link(rel = "stylesheet", href = "/style.min.css")
+
+        style {
+            unsafe {
+                raw(Resources.styleCSS.path.readText())
+            }
+        }
+
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
         meta(
