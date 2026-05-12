@@ -4,7 +4,7 @@ import kotlinx.html.*
 import me.apollointhehouse.data.Resources
 
 inline fun HTML.base(
-    title: String,
+    title: String = "",
     crossinline block: MAIN.() -> Unit,
 ) {
     lang = "en"
@@ -77,9 +77,6 @@ inline fun HTML.base(
         }
 
         content {
-            unsafe {
-                raw("<title>$title</title>")
-            }
             block()
         }
 

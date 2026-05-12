@@ -1,11 +1,11 @@
 package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
+import me.apollointhehouse.ui.html.unsafe
 
-fun HTML.blog(
-    name: String,
+fun FlowContent.blog(
     html: String,
-) = base(name) {
+) {
     unsafe {
         raw(html)
     }

@@ -10,7 +10,7 @@ data class Page(
     val name: String,
     val route: String,
 ) {
-    val partial = "/partials$route"
+    val fragment = "/fragment$route"
 }
 
 fun FlowContent.navbar(vararg pages: Page) =
@@ -25,7 +25,7 @@ fun FlowContent.navbar(vararg pages: Page) =
             for (page in pages) {
                 li {
                     a {
-                        hxGet = page.partial
+                        hxGet = page.fragment
                         hxTarget = "main"
                         hxSwap = "innerHTML show:none"
                         hxPushUrl = page.route

@@ -25,7 +25,7 @@ object Resources {
         ext = "css"
     )
 
-    fun download(
+    private fun download(
         name: String,
         url: String,
         path: String = "",

@@ -19,3 +19,10 @@ inline fun SectioningOrFlowContent.section(
 ) {
     SECTION(attributesMapOf("class", classes, "id", id), consumer).visit(block)
 }
+
+@HtmlTagMarker
+inline fun FlowContent.title(crossinline block : TITLE.() -> Unit = {}) {
+    TITLE(emptyMap, consumer).visit(block)
+}
+
+fun FlowContent.unsafe(block: Unsafe.() -> Unit): Unit = consumer.onTagContentUnsafe(block)

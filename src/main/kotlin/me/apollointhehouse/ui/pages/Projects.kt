@@ -2,7 +2,7 @@ package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
 import me.apollointhehouse.data.models.github.Repo
-import me.apollointhehouse.ui.components.base
+import me.apollointhehouse.ui.html.title
 
 data class Project(
     val name: String,
@@ -28,7 +28,9 @@ fun visibleProjects(repos: List<Repo>): List<Project> =
         .filter { "show-project" in it.topics }
         .sortedByDescending { it.stars }
 
-fun HTML.projects(projects: List<Project>) = base("Projects") {
+fun FlowContent.projects(projects: List<Project>) {
+    title { +"Projects" }
+
     section("projects-list") {
         val chunked = projects.chunked(2)
 

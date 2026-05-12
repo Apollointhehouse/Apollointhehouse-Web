@@ -13,10 +13,8 @@ object Config {
         .also { if (it.exists()) it.deleteRecursively() }
         .createDirectories()
 
-    val partials = (base / "partials")
-        .also { if (it.exists()) it.deleteRecursively() }
-        .also { it.createDirectories() }
-    const val README_STATS_API = "https://github-readme-stats-one-orcin.vercel.app/api"
+    val fragment = (base / "fragment")
+        .createDirectories()
 }
 
 object GitHubConfig {

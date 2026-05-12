@@ -2,90 +2,102 @@ package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
 import kotlinx.html.article
-import me.apollointhehouse.ui.components.base
 import me.apollointhehouse.ui.html.article
 import me.apollointhehouse.ui.html.section
+import me.apollointhehouse.ui.html.title
 
-fun HTML.index() = base("Home") {
-    div("hero") {
-        div("container") {
-            hGroup {
-                p { +"Hello!" }
-                h1 { +"I'm Apollo!" }
-                h2 { +"Student Dev from New Zealand" }
-            }
-        }
-    }
+fun FlowContent.index() {
+    title { +"Home" }
 
-
-    article(id = "about-me") {
-        h3 { +"About Me" }
-        p { +"I am a student from New Zealand, attending the University of Auckland." }
-        p {
-            +
-            """
-            I have experience building backend, fullstack, and general software applications using Kotlin,
-            Java, and TypeScript. I've worked on desktop apps, websites, and game modifications, with experience in event
-            systems, networking, and computer graphics through personal projects and hackathons.
-            """
-        }
-    }
+    hero()
+    about()
 
     div(classes = "grid") {
         id = "home-grid"
-        article(id = "skills") {
-            h3 { +"Skills" }
-            h4 { +"Backend and Game Modding:" }
-            ul {
-                li { +"Languages: Java, Python, Kotlin, SQL" }
-                li { +"Frameworks: KTor, Exposed DAO, Flask, Fabric, Sponge Mixin" }
-            }
 
-            h4 { +"Frontend:" }
-            ul {
-                li { +"Languages: HTML, CSS, JavaScript" }
-                li { +"Frameworks: Compose Multiplatform, Pico CSS" }
-            }
-        }
-
-        article(id = "experience") {
-            h3 { +"Experience" }
-            p {
-                +
-                """
-                I have worked on several java/kotlin based mods for a forked version of Minecraft, 
-                which has given me an understanding of how to work with legacy code bases
-                and how to solve/workaround issues in software development.
-                """
-            }
-
-            p {
-                +"I have collaborated on several shared projects with individuals of varying experience levels."
-            }
-            p { +"In 2025, I participated in the Terrible Ideas Hackathon at the University of Auckland." }
-            p { +"In 2026, I participated in the Web3 Hackathon run by Web3 UoA." }
-        }
-
-        article(id = "education") {
-            h3 { +"Education" }
-            p { +"First-year student attending University of Auckland." }
-            p { +"Taking a BSc in Computer Science." }
-
-            p { +"In my last year of high school I was one of the few students to receive NCEA scholarship Digital Technologies." }
-        }
+        skills()
+        experience()
+        education()
     }
 
-    section(id = "projects") {
-        h3 { +"Projects" }
+    projects()
+}
 
-        for (project in topProjects) {
-            article {
-                header {
-                    a(href = project.url) { h2 { +project.name } }
-                }
-                p { +project.description }
-            }
+private fun FlowContent.hero() = div("hero") {
+    div("container") {
+        hGroup {
+            p { +"Hello!" }
+            h1 { +"I'm Apollo!" }
+            h2 { +"Student Dev from New Zealand" }
         }
+    }
+}
+
+private fun FlowContent.about() = article(id = "about-me") {
+    h3 { +"About Me" }
+    p { +"I am a student from New Zealand, attending the University of Auckland." }
+    p {
+        +
+        """
+        I have experience building backend, fullstack, and general software applications using Kotlin,
+        Java, and TypeScript. I've worked on desktop apps, websites, and game modifications, with experience in event
+        systems, networking, and computer graphics through personal projects and hackathons.
+        """
+    }
+}
+
+
+private fun FlowContent.projects() = section(id = "projects") {
+    h3 { +"Projects" }
+
+    for (project in topProjects) {
+        article {
+            header {
+                a(href = project.url) { h2 { +project.name } }
+            }
+            p { +project.description }
+        }
+    }
+}
+
+private fun DIV.education() = article(id = "education") {
+    h3 { +"Education" }
+    p { +"First-year student attending University of Auckland." }
+    p { +"Taking a BSc in Computer Science." }
+
+    p { +"In my last year of high school I was one of the few students to receive NCEA scholarship Digital Technologies." }
+}
+
+private fun DIV.experience() = article(id = "experience") {
+    h3 { +"Experience" }
+    p {
+        +
+        """
+            I have worked on several java/kotlin based mods for a forked version of Minecraft, 
+            which has given me an understanding of how to work with legacy code bases
+            and how to solve/workaround issues in software development.
+            """
+    }
+
+    p {
+        +"I have collaborated on several shared projects with individuals of varying experience levels."
+    }
+    p { +"In 2025, I participated in the Terrible Ideas Hackathon at the University of Auckland." }
+    p { +"In 2026, I participated in the Web3 Hackathon run by Web3 UoA." }
+}
+
+private fun DIV.skills() = article(id = "skills") {
+    h3 { +"Skills" }
+    h4 { +"Backend and Game Modding:" }
+    ul {
+        li { +"Languages: Java, Python, Kotlin, SQL" }
+        li { +"Frameworks: KTor, Exposed DAO, Flask, Fabric, Sponge Mixin" }
+    }
+
+    h4 { +"Frontend:" }
+    ul {
+        li { +"Languages: HTML, CSS, JavaScript" }
+        li { +"Frameworks: Compose Multiplatform, Pico CSS" }
     }
 }
 
