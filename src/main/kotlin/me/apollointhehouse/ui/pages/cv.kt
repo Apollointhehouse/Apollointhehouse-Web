@@ -2,6 +2,7 @@ package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
 import me.apollointhehouse.data.Resources
+import kotlin.io.path.readText
 
 fun HTML.cv() {
     lang = "en"
@@ -11,8 +12,17 @@ fun HTML.cv() {
         meta(name = "viewport", content = "width=device-width, initial-scale=1")
         meta(name = "color-scheme", content = "light dark")
 
-        link(rel = "stylesheet", href = Resources.picoCSS.url)
-        link(rel = "stylesheet", href = "/style.css")
+        style {
+            unsafe {
+                raw(Resources.picoCSS.path.readText())
+            }
+        }
+
+        style {
+            unsafe {
+                raw(Resources.styleCSS.path.readText())
+            }
+        }
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
 
         meta(
@@ -38,14 +48,14 @@ fun HTML.cv() {
 
         meta {
             attributes["property"] = "og:description"
-            content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand"
+            content = "Personal website for Apollointhehouse"
         }
         meta {
             attributes["property"] = "twitter:description"
-            content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand"
+            content = "Personal website for Apollointhehouse"
         }
 
-        meta(name = "description", content = "Personal website for Apollointhehouse, a hobbyist developer from New Zealand")
+        meta(name = "description", content = "Personal website for Apollointhehouse")
     }
 
     body {

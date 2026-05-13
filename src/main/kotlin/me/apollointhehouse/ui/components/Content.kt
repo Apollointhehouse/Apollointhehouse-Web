@@ -6,7 +6,7 @@ import kotlinx.html.main
 import kotlinx.html.style
 
 inline fun FlowContent.content(crossinline block: MAIN.() -> Unit) =
-    main(classes = "container") {
+    main(classes = "container fade-in") {
         style = "min-height: 100vh;"
         block()
     }
