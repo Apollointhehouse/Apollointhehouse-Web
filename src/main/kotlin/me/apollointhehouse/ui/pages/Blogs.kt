@@ -23,7 +23,7 @@ fun FlowContent.blogs(posts: List<BlogPost>) {
                     hxPushUrl = post.slug
 
                     href = post.slug
-                    attributes["preload"] = ""
+                    attributes["preload"] = "mouseover"
                     h2 { +name }
                 }
                 nav {
