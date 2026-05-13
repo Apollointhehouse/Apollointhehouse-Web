@@ -8,12 +8,12 @@ private val socials =
         Social(
             name = "Github",
             url = "https://github.com/apollointhehouse",
-            icon = "github.png",
+            icon = "github.svg",
         ),
         Social(
             name = "LinkedIn",
             url = "https://linkedin.com/in/apollo-cameron-boot-8061a12b8",
-            icon = "linkedin.png",
+            icon = "linkedin.svg",
         ),
     )
 
@@ -29,6 +29,12 @@ fun FlowContent.footer() =
             ul {
                 for (social in socials) {
                     li("social") {
+                        style {
+                            unsafe {
+
+                            }
+                        }
+
                         a(href = social.url, classes = "contrast", target = "_blank") {
                             themedImg(
                                 themes = SocialTheme.entries,
