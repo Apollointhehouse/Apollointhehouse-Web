@@ -33,8 +33,8 @@ class PageRoute private constructor(
 
     companion object {
         context(builder: Router.Builder)
-        infix fun String.bind(page: HTML.() -> Unit) {
-            builder.route(PageRoute(this, page))
+        fun page(route: String, page: HTML.() -> Unit) {
+            builder.route(PageRoute(route, page))
         }
     }
 }

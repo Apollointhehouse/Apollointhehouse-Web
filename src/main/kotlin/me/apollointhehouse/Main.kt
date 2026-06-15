@@ -3,9 +3,9 @@ package me.apollointhehouse
 import io.ktor.http.*
 import me.apollointhehouse.data.API
 import me.apollointhehouse.data.blogs.loadBlogPosts
-import me.apollointhehouse.data.routing.types.PageRoute.Companion.bind
 import me.apollointhehouse.data.routing.routing
 import me.apollointhehouse.data.routing.types.FragmentRoute.Companion.fragment
+import me.apollointhehouse.data.routing.types.PageRoute.Companion.page
 import me.apollointhehouse.data.routing.types.StaticRoute.Companion.static
 import me.apollointhehouse.data.routing.types.StatusRoute.Companion.status
 import me.apollointhehouse.ui.components.blog
@@ -38,7 +38,7 @@ private val app = routing {
         }
     }
 
-    "/CV" bind {
+    page("/CV") {
         cv()
     }
 

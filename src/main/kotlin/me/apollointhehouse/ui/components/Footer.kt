@@ -18,8 +18,8 @@ private val socials =
     )
 
 fun FlowContent.footer() =
-    footer {
-        nav("container") {
+    div("footer") {
+        nav("container-fluid") {
             ul {
                 li {
                     a(href = "https://github.com/Apollointhehouse/Apollointhehouse-Web") { small { +"Source" } }

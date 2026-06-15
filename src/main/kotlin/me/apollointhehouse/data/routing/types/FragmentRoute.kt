@@ -4,7 +4,7 @@ import kotlinx.html.FlowContent
 import me.apollointhehouse.data.Config
 import me.apollointhehouse.data.logger
 import me.apollointhehouse.data.routing.Router
-import me.apollointhehouse.data.routing.types.PageRoute.Companion.bind
+import me.apollointhehouse.data.routing.types.PageRoute.Companion.page
 import me.apollointhehouse.ui.components.base
 import me.apollointhehouse.ui.html.createFragment
 import me.apollointhehouse.ui.html.hxGet
@@ -40,7 +40,7 @@ class FragmentRoute private constructor(
         fun fragment(route: String, block: FlowContent.() -> Unit) {
             builder.route(FragmentRoute(route, block))
 
-            route bind {
+            page(route) {
                 base {
                     hxGet = "/fragment$route"
                     hxSwap = "transition:true settle:1ms"
