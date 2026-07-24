@@ -13,7 +13,8 @@ import me.apollointhehouse.ui.html.title
 import me.apollointhehouse.ui.pages.*
 import kotlin.io.path.Path
 
-private val app = routing {
+
+fun main() = routing {
     fragment("/") {
         index()
     }
@@ -23,7 +24,6 @@ private val app = routing {
     fragment("/projects") {
         projects(projects)
     }
-
 
     val blogPosts = loadBlogPosts()
 
@@ -47,8 +47,4 @@ private val app = routing {
     }
 
     static(Path("./src/main/resources/static"))
-}
-
-fun main() {
-    app.create()
 }

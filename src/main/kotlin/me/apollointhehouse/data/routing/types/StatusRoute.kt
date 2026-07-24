@@ -18,9 +18,10 @@ class StatusRoute private constructor(
 ) : Route {
     private val logger = logger()
 
+    context(config: Config)
     override fun create() {
         logger.info("Creating Status Route: $url")
-        Path.of("${Config.base}/${code.value}.html")
+        Path.of("${config.base}/${code.value}.html")
             .also { it.createFile() }
             .writer()
             .use {

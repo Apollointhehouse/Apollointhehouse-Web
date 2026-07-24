@@ -13,10 +13,11 @@ class StaticRoute private constructor(
 ) : Route {
     private val logger = logger()
 
+    context(config: Config)
     override fun create() {
         logger.info("Copying Static Files:")
 
-        path.copyToRecursively(target = Config.base, followLinks = false, overwrite = true)
+        path.copyToRecursively(target = config.base, followLinks = false, overwrite = true)
     }
 
     companion object {

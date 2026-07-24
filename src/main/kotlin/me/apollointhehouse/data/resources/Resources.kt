@@ -1,13 +1,8 @@
-package me.apollointhehouse.data
+package me.apollointhehouse.data.resources
 
-import java.net.URI
-import java.nio.file.Path
 import kotlin.io.path.Path
-import kotlin.io.path.createFile
-import kotlin.io.path.exists
-import kotlin.io.path.writeBytes
 
-object Resources {
+class Resources {
     val htmx = download(
         name = "htmx.min",
         url = "https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js",
@@ -26,7 +21,7 @@ object Resources {
         ext = "css"
     )
 
-    val styleCSS = Resource(
+    val styleCSS = ResolvedResource(
         url = "/style.min.css",
         path = Path("./src/main/resources/styles/style.min.css")
     )
@@ -36,17 +31,6 @@ object Resources {
         url: String,
         path: String = "",
         ext: String
-    ): Resource {
-        val dir = Path("${Config.base}/$path/$name.$ext")
-        if (!dir.exists()) dir.createFile()
-
-        dir.writeBytes(URI(url).toURL().readBytes())
-
-        return Resource("$path/$name.$ext", dir)
-    }
+    ): Resource = DownloadableResource(name, url, path, ext)
 }
 
-class Resource(
-    val url: String,
-    val path: Path,
-)

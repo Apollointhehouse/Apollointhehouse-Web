@@ -1,11 +1,14 @@
 package me.apollointhehouse.data.routing
 
+import me.apollointhehouse.data.Config
 import me.apollointhehouse.data.logger
+import me.apollointhehouse.data.resources.Resources
 import me.apollointhehouse.data.routing.types.Route
 
 class Router(private val routes: List<Route>) {
     private val logger = logger()
 
+    context( _: Config)
     fun create() {
         logger.info("Generating Static Pages...")
         for (route in routes) route.create()
@@ -24,5 +27,8 @@ class Router(private val routes: List<Route>) {
     }
 }
 
-inline fun routing(builder: context(Router.Builder) () -> Unit): Router =
-    Router.Builder().apply(builder).build()
+inline fun routing(builder: context(Router.Builder, Config, Resources) () -> Unit) = context(Config(), Resources()) {
+    Router.Builder().apply {
+        builder()
+    }.build().create()
+}

@@ -38,13 +38,14 @@ object API {
 
     private val githubQuery = Path("./src/main/resources/api/GithubQuery").readText()
 
+    context(config: Config)
     fun getPinnedRepos(): List<Repo> = runBlocking {
         logger.info("Getting repositories...")
         val res =
             client.post("https://api.github.com/graphql") {
                 contentType(ContentType.Application.Json)
                 headers {
-                    append(HttpHeaders.Authorization, "bearer ${GitHubConfig.token}")
+                    append(HttpHeaders.Authorization, "bearer ${config.token}")
                     append(HttpHeaders.UserAgent, "Ktor Client")
                 }
 

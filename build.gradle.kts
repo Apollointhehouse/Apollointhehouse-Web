@@ -29,8 +29,6 @@ dependencies {
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl")
     runtimeOnly("org.apache.logging.log4j:log4j-core")
 
-    implementation("org.apache.xmlgraphics:batik-all:1.19")
-
     implementation(kotlin("reflect"))
     testImplementation(kotlin("test"))
 }

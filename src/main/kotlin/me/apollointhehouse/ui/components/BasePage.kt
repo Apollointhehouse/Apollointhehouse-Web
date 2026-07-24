@@ -1,9 +1,11 @@
 package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.data.Resources
+import me.apollointhehouse.data.Config
+import me.apollointhehouse.data.resources.Resources
 import kotlin.io.path.readText
 
+context(resources: Resources, _: Config)
 inline fun HTML.base(
     title: String = "",
     crossinline block: MAIN.() -> Unit,
@@ -17,13 +19,13 @@ inline fun HTML.base(
 
         style {
             unsafe {
-                raw(Resources.picoCSS.path.readText())
+                raw(resources.picoCSS.resolve().path.readText())
             }
         }
 
         style {
             unsafe {
-                raw(Resources.styleCSS.path.readText())
+                raw(resources.styleCSS.path.readText())
             }
         }
 
@@ -62,11 +64,11 @@ inline fun HTML.base(
         meta(name = "description", content = "Personal website for Apollointhehouse")
 
         script {
-            src = Resources.htmx.url
+            src = resources.htmx.url
             attributes["defer"] = ""
         }
         script {
-            src = Resources.htmxPreload.url
+            src = resources.htmxPreload.url
             attributes["defer"] = ""
         }
 

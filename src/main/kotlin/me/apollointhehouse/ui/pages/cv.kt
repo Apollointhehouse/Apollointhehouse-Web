@@ -1,9 +1,10 @@
 package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
-import me.apollointhehouse.data.Resources
-import kotlin.io.path.readText
+import me.apollointhehouse.data.Config
+import me.apollointhehouse.data.resources.Resources
 
+context(resources: Resources, _: Config)
 fun HTML.cv() {
     lang = "en"
 
@@ -14,13 +15,13 @@ fun HTML.cv() {
 
         style {
             unsafe {
-                raw(Resources.picoCSS.path.readText())
+                raw(resources.picoCSS.resolve().toString())
             }
         }
 
         style {
             unsafe {
-                raw(Resources.styleCSS.path.readText())
+                raw(resources.styleCSS.resolve().toString())
             }
         }
         link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")

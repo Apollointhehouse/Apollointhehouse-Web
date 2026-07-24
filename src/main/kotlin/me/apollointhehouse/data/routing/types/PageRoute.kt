@@ -16,6 +16,7 @@ class PageRoute private constructor(
 ) : Route {
     private val logger = logger()
 
+    context(config: Config)
     override fun create() {
         logger.info("Creating Route: $url")
 
@@ -23,7 +24,7 @@ class PageRoute private constructor(
             .html { page() }
             .serialize()
 
-        val folder = Path.of("${Config.base}/$url")
+        val folder = Path.of("${config.base}/$url")
         if (!folder.exists()) folder.createDirectories()
         (folder / "index.html")
             .also { it.createFile() }
