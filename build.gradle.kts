@@ -26,8 +26,10 @@ dependencies {
 
     implementation("io.ktor:ktor-client-logging:$ktor_version")
     runtimeOnly(platform("org.apache.logging.log4j:log4j-bom:$log4jVersion"))
+    implementation("org.apache.logging.log4j:log4j-api-kotlin:1.5.0")
     runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl")
     runtimeOnly("org.apache.logging.log4j:log4j-core")
+    runtimeOnly("org.apache.logging.log4j:log4j-api")
 
     implementation(kotlin("reflect"))
     testImplementation(kotlin("test"))
@@ -51,7 +53,6 @@ kotlin {
     jvmToolchain(21)
 
     compilerOptions {
-        freeCompilerArgs.add("-Xname-based-destructuring=complete")
-        freeCompilerArgs.add("-Xcontext-parameters")
+        freeCompilerArgs.addAll("-Xcontext-parameters", "-Xname-based-destructuring=complete", "-Xcollection-literals", "-Xcontext-sensitive-resolution", "-Xreturn-value-checker=full")
     }
 }

@@ -13,12 +13,11 @@ import kotlinx.serialization.json.Json
 import me.apollointhehouse.data.models.GraphQLQuery
 import me.apollointhehouse.data.models.github.Repo
 import me.apollointhehouse.data.models.github.UserData
+import org.apache.logging.log4j.kotlin.logger
 import kotlin.io.path.Path
 import kotlin.io.path.readText
 
 object API {
-    private val logger = logger()
-
     private val client: HttpClient =
         HttpClient(CIO) {
             install(ContentNegotiation) {

@@ -5,8 +5,8 @@ import kotlinx.html.HTML
 import kotlinx.html.html
 import kotlinx.html.stream.appendHTML
 import me.apollointhehouse.data.Config
-import me.apollointhehouse.data.logger
 import me.apollointhehouse.data.routing.Router
+import org.apache.logging.log4j.kotlin.logger
 import java.nio.file.Path
 import kotlin.io.path.createFile
 import kotlin.io.path.writer
@@ -31,10 +31,9 @@ class StatusRoute private constructor(
 
     companion object {
         context(builder: Router.Builder)
-        fun status(code: HttpStatusCode, content: HTML.() -> Unit): StatusRoute {
+        fun status(code: HttpStatusCode, content: HTML.() -> Unit) {
             val route = StatusRoute(code, code.value.toString(), content)
             builder.route(route)
-            return route
         }
     }
 }

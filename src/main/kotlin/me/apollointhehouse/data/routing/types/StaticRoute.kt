@@ -2,8 +2,8 @@
 package me.apollointhehouse.data.routing.types
 
 import me.apollointhehouse.data.Config
-import me.apollointhehouse.data.logger
 import me.apollointhehouse.data.routing.Router
+import org.apache.logging.log4j.kotlin.logger
 import java.nio.file.Path
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.copyToRecursively
@@ -22,10 +22,9 @@ class StaticRoute private constructor(
 
     companion object {
         context(builder: Router.Builder)
-        fun static(path: Path): Route {
+        fun static(path: Path) {
             val route = StaticRoute(path)
             builder.route(route)
-            return route
         }
     }
 }

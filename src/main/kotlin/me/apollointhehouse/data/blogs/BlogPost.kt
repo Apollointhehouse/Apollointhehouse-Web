@@ -1,8 +1,7 @@
 package me.apollointhehouse.data.blogs
 
 import me.apollointhehouse.data.models.Markdown
-import me.apollointhehouse.data.logger
-import org.slf4j.Logger
+import org.apache.logging.log4j.kotlin.logger
 import java.io.File
 
 data class BlogPost(
@@ -13,8 +12,6 @@ data class BlogPost(
     val fragment = "/fragment/$slug"
 
     companion object {
-        private val logger: Logger = logger()
-
         operator fun invoke(text: String): BlogPost {
             logger.info("Parsing blog post...")
             val lines = text.lines()

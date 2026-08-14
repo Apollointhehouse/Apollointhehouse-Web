@@ -2,7 +2,6 @@ package me.apollointhehouse.data.routing.types
 
 import kotlinx.html.FlowContent
 import me.apollointhehouse.data.Config
-import me.apollointhehouse.data.logger
 import me.apollointhehouse.data.resources.Resources
 import me.apollointhehouse.data.routing.Router
 import me.apollointhehouse.data.routing.types.PageRoute.Companion.page
@@ -11,6 +10,7 @@ import me.apollointhehouse.ui.html.createFragment
 import me.apollointhehouse.ui.html.hxGet
 import me.apollointhehouse.ui.html.hxSwap
 import me.apollointhehouse.ui.html.hxTrigger
+import org.apache.logging.log4j.kotlin.logger
 import java.nio.file.Path
 import kotlin.io.path.createDirectories
 import kotlin.io.path.createFile

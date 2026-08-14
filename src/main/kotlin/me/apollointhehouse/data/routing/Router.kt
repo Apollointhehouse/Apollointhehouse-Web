@@ -1,9 +1,9 @@
 package me.apollointhehouse.data.routing
 
 import me.apollointhehouse.data.Config
-import me.apollointhehouse.data.logger
 import me.apollointhehouse.data.resources.Resources
 import me.apollointhehouse.data.routing.types.Route
+import org.apache.logging.log4j.kotlin.logger
 
 class Router(private val routes: List<Route>) {
     private val logger = logger()
@@ -20,9 +20,8 @@ class Router(private val routes: List<Route>) {
 
         fun build(): Router = Router(routes)
 
-        fun route(route: Route): Builder {
+        fun route(route: Route) {
             routes.add(route)
-            return this
         }
     }
 }
