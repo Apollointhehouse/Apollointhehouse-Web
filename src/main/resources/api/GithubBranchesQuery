@@ -1,0 +1,26 @@
+query($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    name
+    isPrivate
+    refs(refPrefix: "refs/heads/", first: 100) {
+      nodes {
+        name
+        target {
+          ... on Commit {
+            oid
+            checkSuites(first: 5) {
+              nodes {
+                workflowRun {
+                  databaseId
+                  workflow {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

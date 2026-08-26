@@ -38,8 +38,20 @@ fun main() = routing {
         }
     }
 
-    page("/CV") {
-        cv()
+    val cvs = fetchCVs()
+
+    for ([branch, resource] in cvs) {
+        if (branch == "master") {
+            page("/cv") {
+                cv("CV", resource)
+            }
+
+            continue
+        }
+
+        page("/cv/$branch") {
+            cv(branch, resource)
+        }
     }
 
     status(HttpStatusCode.NotFound) {
