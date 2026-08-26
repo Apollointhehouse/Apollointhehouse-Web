@@ -7,9 +7,6 @@ import me.apollointhehouse.data.routing.Router
 import me.apollointhehouse.data.routing.types.PageRoute.Companion.page
 import me.apollointhehouse.ui.components.base
 import me.apollointhehouse.ui.html.createFragment
-import me.apollointhehouse.ui.html.hxGet
-import me.apollointhehouse.ui.html.hxSwap
-import me.apollointhehouse.ui.html.hxTrigger
 import org.apache.logging.log4j.kotlin.logger
 import java.nio.file.Path
 import kotlin.io.path.createDirectories
@@ -44,9 +41,7 @@ class FragmentRoute private constructor(
 
             page(route) {
                 base {
-                    hxGet = "/fragment$route"
-                    hxSwap = "transition:true settle:1ms"
-                    hxTrigger = "load"
+                    block()
                 }
             }
         }
