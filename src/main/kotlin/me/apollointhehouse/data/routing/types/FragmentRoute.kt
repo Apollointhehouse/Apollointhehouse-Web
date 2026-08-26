@@ -36,11 +36,11 @@ class FragmentRoute private constructor(
 
     companion object {
         context(builder: Router.Builder, _: Config, _: Resources)
-        fun fragment(route: String, block: FlowContent.() -> Unit) {
+        fun fragment(route: String, title: String, block: FlowContent.() -> Unit) {
             builder.route(FragmentRoute(route, block))
 
             page(route) {
-                base {
+                base(title) {
                     block()
                 }
             }

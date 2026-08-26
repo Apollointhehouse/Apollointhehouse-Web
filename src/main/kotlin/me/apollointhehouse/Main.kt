@@ -15,24 +15,24 @@ import kotlin.io.path.Path
 
 
 fun main() = routing {
-    fragment("/") {
+    fragment("/", "Home") {
         index()
     }
 
     val projects = visibleProjects(API.getPinnedRepos())
 
-    fragment("/projects") {
+    fragment("/projects", "Projects") {
         projects(projects)
     }
 
     val blogPosts = loadBlogPosts()
 
-    fragment("/blogs") {
+    fragment("/blogs", "Blogs") {
         blogs(blogPosts)
     }
 
     for ((meta, slug, html) in blogPosts) {
-        fragment(slug) {
+        fragment(slug, meta.title) {
             title { +meta.title }
             blog(html)
         }
