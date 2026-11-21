@@ -41,6 +41,15 @@ jobs:
           ./gradlew build  # Build the project and produce the JAR
           java -jar build/libs/Apollointhehouse-Web-1.0-SNAPSHOT.jar # Run the JAR
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Purge unused Pico CSS
+        run: |
+          npm i --no-save --no-package-lock purgecss@7.0.2
+          node scripts/purge-css.mjs ./out
+
       - name: Deploy to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@v3

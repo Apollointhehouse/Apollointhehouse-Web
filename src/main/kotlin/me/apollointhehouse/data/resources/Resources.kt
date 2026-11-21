@@ -18,7 +18,9 @@ class Resources {
     val picoCSS = download(
         name = "pico.min",
         url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css",
-        ext = "css"
+        path = "assets/css",
+        ext = "css",
+        hashed = true
     )
 
     val styleCSS = ResolvedResource(
@@ -30,7 +32,8 @@ class Resources {
         name: String,
         url: String,
         path: String = "",
-        ext: String
-    ): Resource = DownloadableResource(name, url, path, ext)
+        ext: String,
+        hashed: Boolean = false
+    ): Resource = DownloadableResource(name, url, path, ext, hashed)
 }
 

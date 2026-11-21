@@ -17,11 +17,7 @@ inline fun HTML.base(
         meta(name = "viewport", content = "width=device-width, initial-scale=1")
         meta(name = "color-scheme", content = "light dark")
 
-        style {
-            unsafe {
-                raw(resources.picoCSS.resolve().path.readText())
-            }
-        }
+        link(rel = "stylesheet", href = resources.picoCSS.resolve().url)
 
         style {
             unsafe {
