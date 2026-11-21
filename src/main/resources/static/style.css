@@ -12,8 +12,10 @@ html {
     background: transparent;
 }
 
-.social img {
+.social svg {
     width: 1em;
+    height: 1em;
+    vertical-align: middle;
     margin: 0;
     padding: 0;
 }

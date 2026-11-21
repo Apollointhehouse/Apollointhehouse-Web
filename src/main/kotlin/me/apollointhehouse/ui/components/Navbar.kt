@@ -30,7 +30,6 @@ fun FlowContent.navbar(vararg pages: Page) =
                         hxSwap = "innerHTML show:none"
                         hxPushUrl = page.route
 
-                        attributes["preload"] = "mouseover"
                         href = page.route
                         +page.name
                     }

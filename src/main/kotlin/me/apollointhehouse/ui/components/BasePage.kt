@@ -25,7 +25,7 @@ inline fun HTML.base(
             }
         }
 
-        link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
+        link(rel = "icon", type = "image/png", href = faviconDataUri)
 
         meta(
             name = "keywords",
@@ -63,10 +63,6 @@ inline fun HTML.base(
             src = resources.htmx.url
             attributes["defer"] = ""
         }
-        script {
-            src = resources.htmxPreload.url
-            attributes["defer"] = ""
-        }
 
         // verifcation
         meta {
@@ -80,7 +76,6 @@ inline fun HTML.base(
     }
 
     body {
-        attributes["hx-ext"] = "preload"
         div("header") {
             navbar(Page("Home", "/"), Page("Projects", "/projects"), Page("Blogs", "/blogs"))
         }

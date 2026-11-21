@@ -6,6 +6,8 @@ import me.apollointhehouse.data.Config
 import me.apollointhehouse.data.resources.GithubArtifactResource
 import me.apollointhehouse.data.resources.ResolvedResource
 import me.apollointhehouse.data.resources.Resources
+import me.apollointhehouse.ui.components.faviconDataUri
+import kotlin.io.path.readText
 
 context(resources: Resources, _: Config)
 fun HTML.cv(name: String, resource: ResolvedResource) {
@@ -16,18 +18,14 @@ fun HTML.cv(name: String, resource: ResolvedResource) {
         meta(name = "viewport", content = "width=device-width, initial-scale=1")
         meta(name = "color-scheme", content = "light dark")
 
-        style {
-            unsafe {
-                raw(resources.picoCSS.resolve().toString())
-            }
-        }
+        link(rel = "stylesheet", href = resources.picoCSS.resolve().url)
 
         style {
             unsafe {
-                raw(resources.styleCSS.resolve().toString())
+                raw(resources.styleCSS.path.readText())
             }
         }
-        link(rel = "icon", type = "image/x-icon", href = "/assets/images/icon.ico")
+        link(rel = "icon", type = "image/png", href = faviconDataUri)
 
         meta(
             name = "keywords",
