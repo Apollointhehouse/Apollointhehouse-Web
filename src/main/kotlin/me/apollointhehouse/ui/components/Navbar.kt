@@ -1,10 +1,10 @@
 package me.apollointhehouse.ui.components
 
 import kotlinx.html.*
-import me.apollointhehouse.ui.html.hxGet
-import me.apollointhehouse.ui.html.hxPushUrl
-import me.apollointhehouse.ui.html.hxSwap
-import me.apollointhehouse.ui.html.hxTarget
+import me.apollointhehouse.ui.html.extFxPush
+import me.apollointhehouse.ui.html.fxAction
+import me.apollointhehouse.ui.html.fxSwap
+import me.apollointhehouse.ui.html.fxTarget
 
 data class Page(
     val name: String,
@@ -25,10 +25,10 @@ fun FlowContent.navbar(vararg pages: Page) =
             for (page in pages) {
                 li {
                     a {
-                        hxGet = page.fragment
-                        hxTarget = "main"
-                        hxSwap = "innerHTML show:none"
-                        hxPushUrl = page.route
+                        fxAction = page.fragment
+                        fxTarget = "main"
+                        fxSwap = "innerHTML"
+                        extFxPush = true
 
                         href = page.route
                         +page.name

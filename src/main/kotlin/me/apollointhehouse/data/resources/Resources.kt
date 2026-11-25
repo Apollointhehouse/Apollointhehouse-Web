@@ -3,10 +3,14 @@ package me.apollointhehouse.data.resources
 import kotlin.io.path.Path
 
 class Resources {
-    val htmx = download(
-        name = "htmx.min",
-        url = "https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js",
-        ext = "js"
+    val fixi = ResolvedResource(
+        url = "/fixi-0.9.4.js",
+        path = Path("./src/main/resources/static/fixi-0.9.4.js")
+    )
+
+    val extFixi = ResolvedResource(
+        url = "/ext-fixi.js",
+        path = Path("./src/main/resources/static/ext-fixi.js")
     )
 
     val picoCSS = download(

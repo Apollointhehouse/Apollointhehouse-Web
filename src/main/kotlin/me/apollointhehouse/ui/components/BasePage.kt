@@ -60,7 +60,12 @@ inline fun HTML.base(
         meta(name = "description", content = "Personal website for Apollointhehouse")
 
         script {
-            src = resources.htmx.url
+            src = resources.fixi.url
+            attributes["defer"] = ""
+        }
+
+        script {
+            src = resources.extFixi.url
             attributes["defer"] = ""
         }
 

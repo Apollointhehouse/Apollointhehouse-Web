@@ -2,10 +2,10 @@ package me.apollointhehouse.ui.pages
 
 import kotlinx.html.*
 import me.apollointhehouse.data.blogs.BlogPost
-import me.apollointhehouse.ui.html.hxGet
-import me.apollointhehouse.ui.html.hxPushUrl
-import me.apollointhehouse.ui.html.hxSwap
-import me.apollointhehouse.ui.html.hxTarget
+import me.apollointhehouse.ui.html.extFxPush
+import me.apollointhehouse.ui.html.fxAction
+import me.apollointhehouse.ui.html.fxSwap
+import me.apollointhehouse.ui.html.fxTarget
 import me.apollointhehouse.ui.html.title
 
 fun FlowContent.blogs(posts: List<BlogPost>) {
@@ -17,13 +17,12 @@ fun FlowContent.blogs(posts: List<BlogPost>) {
 
             article {
                 a {
-                    hxGet = post.fragment
-                    hxTarget = "main"
-                    hxSwap = "innerHTML show:none"
-                    hxPushUrl = post.slug
+                    fxAction = post.fragment
+                    fxTarget = "main"
+                    fxSwap = "innerHTML"
+                    extFxPush = true
 
                     href = post.slug
-                    attributes["preload"] = "mouseover"
                     h2 { +name }
                 }
                 nav {
